@@ -73,7 +73,6 @@ function App() {
   return (
     <div className="app-root">
       <MatrixBackground />
-      {/* Vertical NavBar */}
       <div className={`vertical-navbar${navOpen ? ' open' : ''}`} style={{left: 0, right: 'auto'}}>
         <button className="nav-toggle" onClick={() => setNavOpen((v) => !v)} aria-label="Toggle navigation">
           {navOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
@@ -97,7 +96,7 @@ function App() {
           </header>
           <section id="about" className="section about" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <img 
-              src="./src/assets/dp.jpg" 
+              src="./assets/dp.jpg" 
               alt="Profile" 
               className="about-photo"
             />
