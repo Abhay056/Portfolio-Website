@@ -1,3 +1,12 @@
 # Portfolio-Website
 
-My Portfolio website.
+## My Portfolio website.
+
+## Commands :
+
+```
+npm install 
+```
+```
+npm run dev
+```
