@@ -96,7 +96,7 @@ function App() {
           </header>
           <section id="about" className="section about" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <img 
-              src="./assets/dp.jpg" 
+              src="/dp.jpg" 
               alt="Profile" 
               className="about-photo"
             />
