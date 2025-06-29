@@ -8,7 +8,7 @@
 ⚡️ Valid HTML5 & CSS3\
 ⚡️ Well organized documentation
 
-To view the demo: **[click here](https://abhay-bahuguna.netlify.app/)**
+To view the demo: **[click here](https://abhaybahuguna.netlify.app/)**
 
 ---
 
