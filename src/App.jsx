@@ -94,7 +94,7 @@ function App() {
             <h1>Abhay Bahuguna</h1>
             <p className="subtitle">Full Stack Developer</p>
           </header>
-          <section id="about" className="section about" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <section id="about" className="section about" style={{ display: 'flex', alignItems: 'center', gap: '2rem', position: 'relative' }}>
             <img 
               src="/dp.jpg" 
               alt="Profile" 
@@ -109,7 +109,7 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
 <p align="justify">Feel free to explore my portfolio and reach out to collaborate!</p>
               <div className="social-links">
                 <a href="https://www.linkedin.com/in/abhay-bahuguna" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.604c0-1.337-.025-3.063-1.868-3.063-1.868 0-2.154 1.459-2.154 2.968v5.699h-3v-10h2.881v1.367h.041c.401-.761 1.379-1.563 2.838-1.563 3.034 0 3.595 1.997 3.595 4.59v5.606z"/></svg>
+                  <img src="https://icongr.am/devicon/linkedin-original.svg?size=128&color=currentColor"/>
                 </a>
                 <a href="mailto:abjun504@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Gmail">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.065l-11.985-8.065v16h23.97v-16l-11.985 8.065zm11.985-10.065h-23.97l11.985 8.065 11.985-8.065z"/></svg>
@@ -121,23 +121,28 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                   <img src="https://art.npanuhin.me/SVG/Codeforces/Codeforces.colored.svg"/>
                 </a>
               </div>
+              {/* <a href="https://drive.google.com/file/d/1Dk1JcmqaPOyFf-IckA5wwyNwDncaTgYL/view?usp=drive_link" className="resume-btn" target="_blank" rel="noopener noreferrer"><button>My Resume</button></a> */}
             </div>
           </section>
           <section id="skills" className="section skills">
             <h2>Technical Skills</h2>
             <ul className="skills-list">
-              <li>JavaScript</li>
-              <li>React.js</li>
-              <li>Node.js</li>
-              <li>HTML5 & CSS3</li>
-              <li>Git & GitHub</li>
-              <li>C++</li>
-              <li>Python</li>
-              <li>Java</li>
-              <li>C</li>
-              <li>SQL</li>
-              <li>MongoDB</li>
-              <li>Express.js</li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/react-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/python-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/c-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/cplusplus-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mongodb-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/html5-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/css3-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/oracle-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/php-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/git-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/java-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/nodejs-original.svg?size=128&color=currentColor"/></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mysql-original-wordmark.svg?size=128&color=currentColor"/></span></li>
+              <li><span className='skill-icon'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" /></span></li>
             </ul>
           </section>
           <section id="education" className="section education">
@@ -160,42 +165,34 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
           <section id="projects" className="section projects">
             <h2>Projects</h2>
             <div className="project-item">
-              <div className="project">
-                <h3>Plagiarism Detection System (KMP, Hash Table) [Mar ’24- Jun ’24] <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer">
-                  <img src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' alt="Plagiarism Detector Repo" />
-                </a></h3>
+              <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Plagiarism Detection System (KMP, Hash Table) [Mar '24- Jun '24]</h3>
                 <p>
-                • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.<br />
-                • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
+                  • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.<br />
+                  • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
                 </p>
-              </div>
-              <div className="project">
-                <h3>Human Detector and Counter (SVM, CNN) [Aug ’24- Sep ’24] <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer">
-                  <img src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' alt="Human Detector Repo" />
-                </a></h3>
+              </a>
+              <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Human Detector and Counter (SVM, CNN) [Aug '24- Sep '24]</h3>
                 <p>
                   • Developed a system that accurately detects and counts the number of people within a defined area using computer vision algorithms.<br />
                   • Utilize machine learning models to identify and track individuals in real-time.
                 </p>
-              </div>
-              <div className="project">
-                <h3>Smart Health Vault (React Js, Node Js, MongoDB)  [Jan ’25- Mar ’25] <a href='https://github.com/Abhay056/Smart-health-vault' target="_blank" rel="noopener noreferrer">
-                  <img src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' alt="Smart Health Vault Repo" />
-                </a></h3>
+              </a>
+              <a href='https://github.com/Abhay056/Smart-health-vault' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Smart Health Vault (React Js, Node Js, MongoDB)  [Jan '25- Mar '25]</h3>
                 <p>
                   • A digital solution for securely storing, managing, and maintaining health records.<br />
                   • Customizable Health Insights with personalized health tracking and analysis for better decision-making.
                 </p>
-              </div>
-              <div className="project">
-                <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr ’25- Jun ’25] <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer">
-                  <img src='https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png' alt="Nano Compiler Repo" />
-                </a></h3>
+              </a>
+              <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr '25- Jun '25]</h3>
                 <p>
                   • Developed an interactive Nano compiler with basic error handling.<br />
                   • Includes Lexical, Syntax and Semantic phase implementation.
                 </p>
-              </div>
+              </a>
             </div>
           </section>
           <section id="contact" className="section contact">

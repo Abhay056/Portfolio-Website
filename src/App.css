@@ -114,7 +114,7 @@ body {
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   font-size: 1rem;
-  transition: color 0.2s, color 0.2s, transform 0.2s;
+  transition: color 0.5s, color 0.5s, transform 0.5s;
 }
 
 .skills-list li:hover {
@@ -124,6 +124,25 @@ body {
   font-size: 1rem;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
   transform: translateY(-3px) scale(1.08);
+}
+
+.skill-icon {
+  align-items: center;
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.skill-icon svg {
+  display: inline-flex;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin-right: 0.6rem; 
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.skills-list li:hover .skill-icon {
+  transform: scale(1.25) rotate(-8deg);
+  filter: drop-shadow(0 0 8px var(--highlighter));
 }
 
 .project-item {
@@ -138,8 +157,8 @@ body {
 }
 
 .project-item a {
-  color: #61dafb;
-  text-decoration: underline;
+  color: #ffffff;
+  text-decoration: none;
   font-size: 0.98rem;
 }
 
@@ -188,26 +207,26 @@ body {
   border-radius: 6px;
   border: none;
   font-size: 1rem;
-  background: #b7b3bb;
-  color: #f5f5f5;
+  background: #ffffff;
+  color: #ffffff;
   resize: none;
 }
 
 .contact-form button {
   background: #1a31b2;
-  color: #232526;
+  color: #ffffff;
   font-weight: bold;
   border: none;
   border-radius: 6px;
   padding: 0.8rem;
   cursor: pointer;
-  transition: color 0.2s;
+  transition: color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .contact-form button:hover {
   background: #5714cc;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
-
+  transform: translateY(-2px) scale(1.05);
 }
 
 .footer {
@@ -255,23 +274,27 @@ body {
 .github-fork {
   background: #1f8acb;
   color: #fff;
+  transition: width 0.5s, height 0.5s, border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
 }
 
 .github-fork:hover {
   background: #153ee4;
   color: #fff;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
+  transform: translateY(-3px) scale(1.08);
 }
 
 .github-star {
   background: #ffcf00;
   color: #232526;
+  transition: width 0.5s, height 0.5s, border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
 }
 
 .github-star:hover {
   background: #cc8828;
   color: #232526;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
+  transform: translateY(-3px) scale(1.08);
 }
 
 @media (max-width: 600px) {
@@ -339,10 +362,10 @@ body {
 .social-links a {
   color: #075aeb;
   background: #fff;
-  border-radius: 50%;
   padding: 0.4rem;
   display: flex;
   align-items: center;
+  border-radius: 50%;
   justify-content: center;
   box-shadow: 0 1px 6px rgba(30,40,80,0.10);
   transition: color 0.2s, transform 0.2s;
@@ -351,7 +374,8 @@ body {
 
 .social-links a:hover {
   background:#fff;
-  color:#153ee4;
+  color:#153ee4;  
+  border-radius: 50%;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
   transform: translateY(-3px) scale(1.08);
 }
@@ -360,8 +384,21 @@ body {
   width: 24px;
   height: 24px;
   border-radius: 50%;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: width 0.5s, height 0.5s, border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
 }
+
+/* .social-links resume-btn {
+  background-color: #153ee4;
+  width: 150px;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.social-links resume-btn:hover {
+  background:#fff;
+  color:#153ee4;
+  box-shadow: 1px 2px 6px 6px var(--highlighter);
+  transform: translateY(-3px) scale(1.08);
+}  */
 
 .vertical-navbar {
   position: fixed;
@@ -469,7 +506,7 @@ body {
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-  transition: color 0.2s, color 0.2s, transform 0.2s;
+  transition: color 0.2s, color 0.2s, transform 0.5s;
 }
 
 .col:hover {
@@ -480,4 +517,18 @@ body {
   margin-bottom: 1rem;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
   transform: translateY(-1px) scale(1.05); 
+}
+
+.project-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  transition: width 0.5s, height 0.5s, border-radius 0.5s, box-shadow 0.5s, transform 0.5s;
+
+}
+.project-link:hover {
+  background: rgb(78, 29, 134);
+  border-radius: 8px;
+  box-shadow: 1px 2px 6px 6px var(--highlighter);
+  transform: translateY(-2px) scale(1.05);
 }
