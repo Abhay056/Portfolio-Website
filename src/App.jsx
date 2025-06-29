@@ -83,7 +83,7 @@ function App() {
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="https://drive.google.com/file/d/1Dk1JcmqaPOyFf-IckA5wwyNwDncaTgYL/view?usp=drive_link">Resume</a>
+            <a href="https://drive.google.com/file/d/1Dk1JcmqaPOyFf-IckA5wwyNwDncaTgYL/view?usp=drive_link" target='blank'>My Resume</a>
             <a href="#contact">Contact</a>
           </nav>
         )}
@@ -92,7 +92,7 @@ function App() {
         <div className="portfolio-container">
           <header className="header">
             <h1>Abhay Bahuguna</h1>
-            <p className="subtitle">Full Stack Developer</p>
+            <p className="subtitle">Full Stack  Developer</p>
           </header>
           <section id="about" className="section about" style={{ display: 'flex', alignItems: 'center', gap: '2rem', position: 'relative' }}>
             <img 
@@ -102,7 +102,7 @@ function App() {
             />
             <div>
               <h2>About Me</h2>
-              <p align="justify">I am a Full Stack Web Developer. I have created interactive and user-friendly web experiences, adding creativity with technical expertise.
+              <p align="justify">I am a Full Stack Developer. I have created interactive and user-friendly web experiences, adding creativity with technical expertise.
 With a keen interest in web development, I enjoy working with technologies like Python, React, Node.js. I am always eager to learn new frameworks and improve my problem-solving skills by building real-world projects.
 Beyond coding, I love exploring competitive programming. My goal is to develop efficient and scalable web applications that make an impact.
 </p>
@@ -120,10 +120,11 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                 <a href="https://codeforces.com/profile/Abhay5055" target="_blank" rel="noopener noreferrer" aria-label="Codeforces">
                   <img src="https://art.npanuhin.me/SVG/Codeforces/Codeforces.colored.svg"/>
                 </a>
-              </div>
+              </div>  
               {/* <a href="https://drive.google.com/file/d/1Dk1JcmqaPOyFf-IckA5wwyNwDncaTgYL/view?usp=drive_link" className="resume-btn" target="_blank" rel="noopener noreferrer"><button>My Resume</button></a> */}
             </div>
           </section>
+          <br/><br/>
           <section id="skills" className="section skills">
             <h2>Technical Skills</h2>
             <ul className="skills-list">
@@ -145,6 +146,7 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
               <li><span className='skill-icon'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" /></span></li>
             </ul>
           </section>
+          <br/><br/>
           <section id="education" className="section education">
             <h2>Education</h2>
             <div className="education-item">
@@ -152,49 +154,57 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                 <h3>B.Tech in Computer Science and Engineering</h3>
                 <p>Graphic Era Hill University, Dehradun</p>
                 <p>2022-2026</p>
-                <p>CGPA 8.06</p>
               </div>
               <div className='col'>
                 <h3>10+2 CBSE PCM</h3>
                 <p>Sharda Public School, Almora</p>
                 <p>2019-2021</p>
-                <p>Scored 92%</p>
               </div>
             </div>
           </section>
+          <br/><br/>
           <section id="projects" className="section projects">
             <h2>Projects</h2>
             <div className="project-item">
               <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
                 <h3>Plagiarism Detection System (KMP, Hash Table) [Mar '24- Jun '24]</h3>
                 <p>
-                  • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.<br />
+                  • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.
+                </p>
+                <p>
                   • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
                 <h3>Human Detector and Counter (SVM, CNN) [Aug '24- Sep '24]</h3>
                 <p>
-                  • Developed a system that accurately detects and counts the number of people within a defined area using computer vision algorithms.<br />
+                  • Developed a system that accurately detects and counts the number of people within a defined area using computer vision algorithms.
+                </p>
+                <p>
                   • Utilize machine learning models to identify and track individuals in real-time.
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Smart-health-vault' target="_blank" rel="noopener noreferrer" className="project project-link">
                 <h3>Smart Health Vault (React Js, Node Js, MongoDB)  [Jan '25- Mar '25]</h3>
                 <p>
-                  • A digital solution for securely storing, managing, and maintaining health records.<br />
+                  • A digital solution for securely storing, managing, and maintaining health records.
+                </p>
+                <p>
                   • Customizable Health Insights with personalized health tracking and analysis for better decision-making.
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link">
                 <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr '25- Jun '25]</h3>
                 <p>
-                  • Developed an interactive Nano compiler with basic error handling.<br />
+                  • Developed an interactive Nano compiler with basic error handling.
+                </p>
+                <p>
                   • Includes Lexical, Syntax and Semantic phase implementation.
                 </p>
               </a>
             </div>
           </section>
+          <br/><br/>
           <section id="contact" className="section contact">
             <h2>Contact</h2>
             <form className="contact-form">

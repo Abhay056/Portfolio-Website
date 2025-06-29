@@ -4,7 +4,6 @@
   padding: 2rem;
   text-align: center;
   --highlighter:rgb(255, 217, 0);
-
 }
 
 .card {
@@ -63,10 +62,11 @@ body {
 }
 
 .subtitle {
-  font-size: 2rem;
-  color: #ff53f1;
+  font-size: 2.2rem;
+  color: #ffffff;
   margin-bottom: 1rem;
   font-weight: bold;
+  text-shadow: 2px 1px #1ab224;
 }
 
 .nav {
@@ -87,17 +87,44 @@ body {
   color: #21a1f3;
 }
 
-.section {
-  background: #1c7dd7;
+#about{
+  background: #4a44ff;
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
   border-radius: 12px;
+  font-size: 1.1rem;
   padding: 2rem 1.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+  transition: color 0.2s, color 0.2s, transform 0.2s;
+}
+
+#about:hover {
+  background: #4a44ff;
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
+  border-radius: 12px;
+  font-size: 1.1rem;
+  padding: 2rem 1.5rem;
+  margin-bottom: 2rem;
+  box-shadow: 1px 2px 6px 6px var(--highlighter);
+  transform: translateY(-2px) scale(1.05);
+}
+
+#about h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+  text-align: left;
+}
+
+.section .about .p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #ffffffc1;
 }
 
 .section h2 {
-  color: #5dfb70;
-  font-size: 2rem;
+  color: #ffffff;
+  font-size: 2.5rem;
   margin-bottom: 1rem;
 }
 
@@ -110,7 +137,7 @@ body {
 }
 
 .skills-list li {
-  background:  #1e2696;
+  background: transparent linear-gradient(135deg, #5c4cd0 0%, #aac4d0 100%);
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   font-size: 1rem;
@@ -118,7 +145,7 @@ body {
 }
 
 .skills-list li:hover {
-  background: rgb(78, 29, 134);
+  background: transparent linear-gradient(135deg, #5c4cd0 0%, #aac4d0 100%);
   padding: 0.5rem 1.2rem;
   border-radius: 8px;
   font-size: 1rem;
@@ -128,15 +155,6 @@ body {
 
 .skill-icon {
   align-items: center;
-  transition: transform 0.2s, filter 0.2s;
-}
-
-.skill-icon svg {
-  display: inline-flex;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  margin-right: 0.6rem; 
   transition: transform 0.2s, filter 0.2s;
 }
 
@@ -163,7 +181,7 @@ body {
 }
 
 .project {
-  background:  #1e2696;
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
   border-radius: 8px;
   padding: 1rem;
   margin-bottom: 1rem;
@@ -171,24 +189,8 @@ body {
   transition: color 0.2s, color 0.2s, transform 0.2s;
 }
 
-.project:hover {
-  background: rgb(78, 29, 134);
-  border-radius: 8px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  box-shadow: 1px 2px 6px 6px var(--highlighter);
-  transform: translateY(-2px) scale(1.05);
-}
-
 .project h3 {
   margin-top: 0;
-}
-
-.project img {
-  height: 30px;
-  width: 30px;
-  border-radius: 50%;
-  vertical-align: middle;
 }
 
 .project p {
@@ -213,7 +215,7 @@ body {
 }
 
 .contact-form button {
-  background: #1a31b2;
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
   color: #ffffff;
   font-weight: bold;
   border: none;
@@ -268,7 +270,7 @@ body {
   border-radius: 8px;
   padding: 0.5rem 1.2rem;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  transition: color 0.2s, color 0.2s, box-shadow 0.2s;
 }
 
 .github-fork {
@@ -308,29 +310,6 @@ body {
     flex-direction: column;
     gap: 0.7rem;
   }
-}
-
-.code-snapshot {
-  padding: 0;
-  background: none;
-  box-shadow: none;
-}
-
-.code-block {
-  background: #595db7;
-  color: #e3e3e3;
-  font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace;
-  font-size: 1.05rem;
-  border-radius: 10px;
-  padding: 1.2rem 1rem;
-  margin: 0 auto 1.5rem auto;
-  overflow-x: auto;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.12);
-  border: 1px solid #958ed6;
-}
-
-.code-block span {
-  color: #7ec3f7;
 }
 
 .about-photo {
@@ -500,7 +479,7 @@ body {
 }
 
 .col {
-  background: #1e2696;
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
   border-radius: 8px;
   border-color: #05ab4a;
   padding: 1rem;
@@ -510,7 +489,7 @@ body {
 }
 
 .col:hover {
-  background: rgb(78, 29, 134);
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
   border-radius: 8px;
   border-color: #05ab4a;
   padding: 1rem;
@@ -527,7 +506,7 @@ body {
 
 }
 .project-link:hover {
-  background: rgb(78, 29, 134);
+  background: transparent linear-gradient(135deg, #8307f0 0%, #05638e 100%);
   border-radius: 8px;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
   transform: translateY(-2px) scale(1.05);
