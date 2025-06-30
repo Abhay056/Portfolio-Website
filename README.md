@@ -6,6 +6,8 @@
 ⚡️ One Page Layout\
 ⚡️ Fully Responsive\
 ⚡️ Valid HTML5 & CSS3\
+⚡️ React.js for frontend\
+⚡️ Node.js and MongoDB for backend\
 ⚡️ Well organized documentation
 
 To view the demo: **[click here](https://abhaybahuguna.netlify.app/)**
