@@ -207,7 +207,28 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
           <br/><br/>
           <section id="contact" className="section contact">
             <h2>Contact</h2>
-            <form className="contact-form">
+            <form
+              className="contact-form"
+              onSubmit={async (e) => {
+                e.preventDefault();
+                const name = e.target[0].value;
+                const email = e.target[1].value;
+                const message = e.target[2].value;
+
+                const res = await fetch('http://localhost:5000/api/contact', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ name, email, message }),
+                });
+
+                if (res.ok) {
+                  alert('Message sent!');
+                  e.target.reset();
+                } else {
+                  alert('Failed to send message.');
+                }
+              }}
+            >
               <input type="text" placeholder="Your Name" required />
               <input type="email" placeholder="Your Email" required />
               <textarea placeholder="Your Message" required></textarea>
