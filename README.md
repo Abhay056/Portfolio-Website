@@ -21,6 +21,7 @@ To view the demo: **[click here](https://abhaybahuguna.netlify.app/)**
 
 ## Commands :   
 
+### Fronted 
 ```
 npm install 
 ```
@@ -30,6 +31,11 @@ npm run dev
 or
 ```
 npm start
+```
+
+### Backend
+```
+node server.js
 ```
 ## Status
 
