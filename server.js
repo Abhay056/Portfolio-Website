@@ -19,7 +19,6 @@ mongoose.connect(
 ).then(() => console.log('MongoDB connected'))
  .catch(err => console.error('MongoDB connection error:', err));
 
-// Define a schema and model
 const messageSchema = new mongoose.Schema({
   name: String,
   email: String,
