@@ -150,10 +150,12 @@ body {
   border-radius: 8px;
   font-size: 1rem;
   box-shadow: 1px 2px 6px 6px var(--highlighter);
-  transform: translateY(-3px) scale(1.08);
+  transform: translateY(-1px) scale(1.05);
 }
 
 .skill-icon {
+  position: relative;
+  display: inline-block;
   align-items: center;
   transition: transform 0.2s, filter 0.2s;
 }
@@ -161,6 +163,32 @@ body {
 .skills-list li:hover .skill-icon {
   transform: scale(1.25) rotate(-8deg);
   filter: drop-shadow(0 0 8px var(--highlighter));
+}
+
+.skill-tooltip {
+  visibility: hidden;
+  opacity: 0;
+  width: max-content;
+  background: #222;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 4px 10px;
+  position: absolute;
+  z-index: 10;
+  bottom: 110%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.9rem;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.skill-icon:hover .skill-tooltip,
+.skill-icon:focus .skill-tooltip {
+  visibility: visible;
+  opacity: 1;
 }
 
 .project-item {

@@ -128,22 +128,22 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
           <section id="skills" className="section skills">
             <h2>Technical Skills</h2>
             <ul className="skills-list">
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/react-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/python-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/c-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/cplusplus-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mongodb-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/html5-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/css3-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/oracle-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/php-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/git-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/java-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/nodejs-original.svg?size=128&color=currentColor"/></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mysql-original-wordmark.svg?size=128&color=currentColor"/></span></li>
-              <li><span className='skill-icon'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" /></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor" alt="JavaScript" /><span className="skill-tooltip">JavaScript</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/react-original.svg?size=128&color=currentColor" alt="React" /><span className="skill-tooltip">React</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/python-original.svg?size=128&color=currentColor" alt="Python" /><span className="skill-tooltip">Python</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/c-original.svg?size=128&color=currentColor" alt="C" /><span className="skill-tooltip">C</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/cplusplus-original.svg?size=128&color=currentColor" alt="C++" /><span className="skill-tooltip">C++</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mongodb-original.svg?size=128&color=currentColor" alt="MongoDB" /><span className="skill-tooltip">MongoDB</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor" alt="TypeScript" /><span className="skill-tooltip">TypeScript</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/html5-original.svg?size=128&color=currentColor" alt="HTML5" /><span className="skill-tooltip">HTML5</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/css3-original.svg?size=128&color=currentColor" alt="CSS3" /><span className="skill-tooltip">CSS3</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/oracle-original.svg?size=128&color=currentColor" alt="Oracle" /><span className="skill-tooltip">Oracle</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/php-original.svg?size=128&color=currentColor" alt="PHP" /><span className="skill-tooltip">PHP</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/git-original.svg?size=128&color=currentColor" alt="Git" /><span className="skill-tooltip">Git</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/java-original.svg?size=128&color=currentColor" alt="Java" /><span className="skill-tooltip">Java</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/nodejs-original.svg?size=128&color=currentColor" alt="Node.js" /><span className="skill-tooltip">Node.js</span></span></li>
+              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mysql-original-wordmark.svg?size=128&color=currentColor" alt="MySQL" /><span className="skill-tooltip">MySQL</span></span></li>
+              <li><span className='skill-icon'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" alt="Android" /><span className="skill-tooltip">Android</span></span></li>
             </ul>
           </section>
           <br/><br/>
