@@ -231,14 +231,11 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
             >
               <input type="text" placeholder="Your Name" required />
               <input type="email" placeholder="Your Email" required />
-              <textarea placeholder="Your Message" required></textarea>
+              <textarea placeholder="Your message" required />
               <button type="submit">Send Message</button>
             </form>
           </section>
           <footer className="footer">
-            <p>
-              &copy; {new Date().getFullYear()} Abhay Bahuguna. All rights reserved.
-            </p>
             <div className="footer-github-buttons">
               <a
                 rel="noreferrer"
@@ -267,6 +264,10 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                 Star
               </a>
             </div>
+            <p>
+              <br/>
+              &copy; {new Date().getFullYear()} Abhay Bahuguna. All rights reserved.
+            </p>
           </footer>
         </div>
       </div>
