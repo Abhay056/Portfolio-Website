@@ -1,0 +1,59 @@
+.splash-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(135deg, #bbb4c0 0%, #c3cfff 40%, #c8b0ff 80%, #ffffff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.splash-screen.fade-in {
+  opacity: 0;
+  animation: fadeInSplash 0.7s forwards;
+}
+
+.splash-screen.fade-out {
+  opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+@keyframes fadeInSplash {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.splash-image {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  animation: popIn 1.2s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+}
+
+@keyframes popIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}

@@ -27,6 +27,10 @@ To view the demo: **[click here](https://abhaybahuguna.netlify.app/)**
 ```
 npm install 
 ```
+For Animation
+```
+npm install @lottiefiles/dotlottie-react
+```
 ```
 npm run dev
 ```

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import SplashScreen from './SplashScreen';
 import './App.css'
 
 function MatrixBackground() {
@@ -69,9 +70,11 @@ function MatrixBackground() {
 
 function App() {
   const [navOpen, setNavOpen] = useState(true);
+  const [showSplash, setShowSplash] = useState(true);
 
   return (
     <div className="app-root">
+      {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
       <MatrixBackground />
       <div className={`vertical-navbar${navOpen ? ' open' : ''}`} style={{left: 0, right: 'auto'}}>
         <button className="nav-toggle" onClick={() => setNavOpen((v) => !v)} aria-label="Toggle navigation">
@@ -121,7 +124,6 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                   <img src="https://art.npanuhin.me/SVG/Codeforces/Codeforces.colored.svg"/>
                 </a>
               </div>  
-              {/* <a href="https://drive.google.com/file/d/1Dk1JcmqaPOyFf-IckA5wwyNwDncaTgYL/view?usp=drive_link" className="resume-btn" target="_blank" rel="noopener noreferrer"><button>My Resume</button></a> */}
             </div>
           </section>
           <br/><br/>
