@@ -217,17 +217,23 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                 const email = e.target[1].value;
                 const message = e.target[2].value;
 
-                const res = await fetch('http://localhost:5000/api/contact', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ name, email, message }),
-                });
+                try {
+                  const res = await fetch('/.netlify/functions/contact', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message }),
+                  });
 
-                if (res.ok) {
-                  alert('Message sent!');
-                  e.target.reset();
-                } else {
-                  alert('Failed to send message.');
+                  const data = await res.json();
+                  if (res.ok) {
+                    alert('✅ Message sent: ' + data.message);
+                    e.target.reset();
+                  } else {
+                    alert('❌ Failed to send: ' + (data.error || res.status));
+                  }
+                } catch (err) {
+                  console.error('Fetch error:', err);
+                  alert('❌ Network error — check console');
                 }
               }}
             >

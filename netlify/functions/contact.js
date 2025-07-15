@@ -10,6 +10,10 @@ export async function handler(event, context) {
   if (event.httpMethod !== 'POST') {
     return {
       statusCode: 405,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({ error: 'Method Not Allowed' }),
     };
   }
@@ -54,6 +58,10 @@ export async function handler(event, context) {
 
     return {
       statusCode: 201,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({
         success: true,
         message: 'Message saved!',
@@ -64,6 +72,10 @@ export async function handler(event, context) {
     console.error('Error saving message:', error);
     return {
       statusCode: 500,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Headers': 'Content-Type',
+      },
       body: JSON.stringify({ error: 'Failed to save message.' }),
     };
   } finally {
