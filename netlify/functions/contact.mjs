@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { MongoClient } from 'mongodb';
 
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URL;
 const dbName = process.env.MONGODB_DATABASE || 'portfolio-messages';
 const collectionName = process.env.MONGODB_COLLECTION || 'messages';
 

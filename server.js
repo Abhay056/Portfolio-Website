@@ -6,7 +6,7 @@ import path from 'path';
 
 const app = express();
 const PORT = 5000;
-const MONGODB_URL = import.meta.env.MONGODB_URL
+const MONGODB_URL = process.env.MONGODB_URL
 
 app.use(cors());
 app.use(express.json());
