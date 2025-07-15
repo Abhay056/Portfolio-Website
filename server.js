@@ -6,12 +6,13 @@ import path from 'path';
 
 const app = express();
 const PORT = 5000;
+const MONGODB_URL = import.meta.env.MONGODB_URL
 
 app.use(cors());
 app.use(express.json());
 
 mongoose.connect(
-  'mongodb+srv://user:abhay123@portfolio-messages.nomobox.mongodb.net/?retryWrites=true&w=majority&appName=portfolio-messages',
+  MONGODB_URL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
