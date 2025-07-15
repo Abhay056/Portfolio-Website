@@ -18,7 +18,7 @@ export async function handler(event, context) {
     };
   }
 
-  let client;
+  let client = null;
 
   try {
     const { name, email, message } = JSON.parse(event.body);
@@ -30,6 +30,14 @@ export async function handler(event, context) {
       };
     }
 
+    if (!cachedClient) {
+      cachedClient = new MongoClient(uri);
+      await cachedClient.connect();
+    }
+
+    const db = client.db(dbName);
+    const collection = db.collection(collectionName);
+
     const newMessage = {
       name,
       email,
@@ -37,13 +45,12 @@ export async function handler(event, context) {
       date: new Date(),
     };
 
-    client = new MongoClient(uri);
-    await client.connect();
-
-    const db = client.db(dbName);
-    const collection = db.collection(collectionName);
-
-    const result = await collection.insertOne(newMessage);
+     const result = await collection.insertOne({
+      name,
+      email,
+      message,
+      createdAt: new Date(),
+    });
 
     const filePath = path.join('/tmp', 'messages.json');
     let messages = [];
