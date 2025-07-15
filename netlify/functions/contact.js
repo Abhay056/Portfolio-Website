@@ -30,9 +30,9 @@ export async function handler(event, context) {
       };
     }
 
-    if (!cachedClient) {
-      cachedClient = new MongoClient(uri);
-      await cachedClient.connect();
+    if (!client) {
+      client = new MongoClient(uri);
+      await client.connect();
     }
 
     const db = client.db(dbName);
