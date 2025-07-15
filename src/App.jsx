@@ -224,7 +224,7 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                     body: JSON.stringify({ name, email, message }),
                   });
 
-                  const data = await res.json();
+                  const data = await res.json().catch(() => ({}));
                   if (res.ok) {
                     alert('✅ Message sent: ' + data.message);
                     e.target.reset();
