@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import { MongoClient } from 'mongodb';
 
 const uri = process.env.MONGODB_URL;
@@ -30,10 +28,8 @@ export async function handler(event, context) {
       };
     }
 
-    if (!client) {
-      client = new MongoClient(uri);
-      await client.connect();
-    }
+    client = new MongoClient(uri);
+    await client.connect();
 
     const db = client.db(dbName);
     const collection = db.collection(collectionName);
@@ -42,26 +38,10 @@ export async function handler(event, context) {
       name,
       email,
       message,
-      date: new Date(),
+      createdAt: new Date(),
     };
 
-     const result = await collection.insertOne({
-      name,
-      email,
-      message,
-      createdAt: new Date(),
-    });
-
-    const filePath = path.join('/tmp', 'messages.json');
-    let messages = [];
-
-    if (fs.existsSync(filePath)) {
-      const data = fs.readFileSync(filePath, 'utf-8');
-      messages = data ? JSON.parse(data) : [];
-    }
-
-    messages.push(newMessage);
-    fs.writeFileSync(filePath, JSON.stringify(messages, null, 2), 'utf-8');
+    const result = await collection.insertOne(newMessage);
 
     return {
       statusCode: 201,
