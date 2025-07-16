@@ -51,7 +51,7 @@ export async function handler(event, context) {
       },
       body: JSON.stringify({
         success: true,
-        message: 'Message saved!',
+        message: 'Successfully !',
         id: result.insertedId,
       }),
     };
@@ -63,7 +63,7 @@ export async function handler(event, context) {
         'Access-Control-Allow-Origin': '*',
         'Access-Control-Allow-Headers': 'Content-Type',
       },
-      body: JSON.stringify({ error: 'Failed to save message.' }),
+      body: JSON.stringify({ error: 'Failed to send message.' }),
     };
   } finally {
     if (client) await client.close();
