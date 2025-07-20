@@ -86,7 +86,7 @@ function App() {
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="https://drive.google.com/file/d/1Dk1JcmqaPOyFf-IckA5wwyNwDncaTgYL/view?usp=drive_link" target='blank'>My Resume</a>
+            <a href="https://drive.google.com/file/d/1VC3vsOwke5nARFLScsdtmkjExL3a3pmD/view?usp=sharing" target='blank'>My Resume</a>
             <a href="#contact">Contact</a>
           </nav>
         )}
@@ -168,31 +168,13 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
           <section id="projects" className="section projects">
             <h2>Projects</h2>
             <div className="project-item">
-              <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Plagiarism Detection System (KMP, Hash Table) [Mar '24- Jun '24]</h3>
+              <a href='https://github.com/Abhay056/expense-tracker-app' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Expense Tracker App (React.js, Next.js, Supabase )  [Jun '25- Jul '25]</h3>
                 <p>
-                  • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.
+                  • Useful application for efficiently managing daily expenses with user authentication.
                 </p>
                 <p>
-                  • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
-                </p>
-              </a>
-              <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Human Detector and Counter (SVM, CNN) [Aug '24- Sep '24]</h3>
-                <p>
-                  • Developed a system that accurately detects and counts the number of people within a defined area using computer vision algorithms.
-                </p>
-                <p>
-                  • Utilize machine learning models to identify and track individuals in real-time.
-                </p>
-              </a>
-              <a href='https://github.com/Abhay056/Smart-health-vault' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Smart Health Vault (React Js, Node Js, MongoDB)  [Jan '25- Mar '25]</h3>
-                <p>
-                  • A digital solution for securely storing, managing, and maintaining health records.
-                </p>
-                <p>
-                  • Customizable Health Insights with personalized health tracking and analysis for better decision-making.
+                  • Multiple features including monthly budgets, filters, and expense summary with charts.
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link">
@@ -202,6 +184,24 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                 </p>
                 <p>
                   • Includes Lexical, Syntax and Semantic phase implementation.
+                </p>
+              </a>
+                <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Human Detector and Counter (SVM, CNN) [Aug '24- Sep '24]</h3>
+                <p>
+                  • Developed a system that accurately detects and counts the number of people within a defined area using computer vision algorithms.
+                </p>
+                <p>
+                  • Utilize machine learning models to identify and track individuals in real-time.
+                </p>
+              </a>
+              <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Plagiarism Detection System (KMP, Hash Table) [May '24- Jun '24]</h3>
+                <p>
+                  • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.
+                </p>
+                <p>
+                  • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
                 </p>
               </a>
             </div>
@@ -239,7 +239,7 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
             >
               <input type="text" placeholder="Your Name" required />
               <input type="email" placeholder="Your Email" required />
-              <textarea placeholder="Your message" required />
+              <textarea placeholder="Your message" required /> 
               <button type="submit">Send Message</button>
             </form>
           </section>
