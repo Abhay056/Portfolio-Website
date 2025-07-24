@@ -86,7 +86,7 @@ function App() {
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="https://drive.google.com/file/d/1VC3vsOwke5nARFLScsdtmkjExL3a3pmD/view?usp=sharing" target='blank'>My Resume</a>
+            <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=sharing" target='blank'>My Resume</a>
             <a href="#contact">Contact</a>
           </nav>
         )}
@@ -187,12 +187,12 @@ Beyond coding, I love exploring competitive programming. My goal is to develop e
                 </p>
               </a>
                 <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Human Detector and Counter (SVM, CNN) [Aug '24- Sep '24]</h3>
+                <h3>Human Detector and Counter (Python, OpenCV, YOLOv8) [Aug '24- Sep '24]</h3>
                 <p>
-                  • Developed a system that accurately detects and counts the number of people within a defined area using computer vision algorithms.
+                  •  Implemented a system that accurately detects and counts humans in real-time video streams or images.
                 </p>
                 <p>
-                  • Utilize machine learning models to identify and track individuals in real-time.
+                  •  Efficient solution for various applications requiring human presence monitoring.
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
