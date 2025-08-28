@@ -71,6 +71,7 @@ function MatrixBackground() {
 function App() {
   const [navOpen, setNavOpen] = useState(true);
   const [showSplash, setShowSplash] = useState(true);
+  const [formStatus, setFormStatus] = useState({ message: '', type: '' });
 
   return (
     <div className="app-root">
@@ -258,6 +259,8 @@ function App() {
               className="contact-form"
               onSubmit={async (e) => {
                 e.preventDefault();
+                setFormStatus({ message: 'Sending...', type: 'sending' });
+                
                 const name = e.target[0].value;
                 const email = e.target[1].value;
                 const message = e.target[2].value;
@@ -271,14 +274,14 @@ function App() {
 
                   const data = await res.json().catch(() => ({}));
                   if (res.ok) {
-                    alert('✅ Message sent: ' + data.message);
+                    setFormStatus({ message: '✅ Message sent successfully!', type: 'success' });
                     e.target.reset();
                   } else {
-                    alert('❌ Failed to send: ' + (data.error || res.status));
+                    setFormStatus({ message: `❌ Failed to send: ${data.error || res.status}`, type: 'error' });
                   }
                 } catch (err) {
                   console.error('Fetch error:', err);
-                  alert('❌ Network error — check console');
+                  setFormStatus({ message: '❌ Network error - please try again', type: 'error' });
                 }
               }}
             >
@@ -286,6 +289,23 @@ function App() {
               <input type="email" placeholder="Your Email"  style={{ fontFamily: 'monospace' }} required />
               <textarea placeholder="Your Message" style={{ fontFamily: 'monospace' }} required /> 
               <button type="submit">Send Message</button>
+              {formStatus.message && (
+                <div 
+                  className={`form-status ${formStatus.type}`}
+                  style={{
+                    marginTop: '1rem',
+                    padding: '0.75rem',
+                    borderRadius: '4px',
+                    textAlign: 'center',
+                    fontFamily: 'monospace',
+                    backgroundColor: formStatus.type === 'success' ? '#d4edda' : formStatus.type === 'error' ? '#f8d7da' : '#d1ecf1',
+                    color: formStatus.type === 'success' ? '#155724' : formStatus.type === 'error' ? '#721c24' : '#0c5460',
+                    border: `1px solid ${formStatus.type === 'success' ? '#c3e6cb' : formStatus.type === 'error' ? '#f5c6cb' : '#bee5eb'}`
+                  }}
+                >
+                  {formStatus.message}
+                </div>
+              )}
             </form>
             <h3 style={{ textAlign: 'center' }}>OR</h3>
             <h3>Contact me via WhatsApp<a href="https://wa.me/919458124662" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
