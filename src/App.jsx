@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import SplashScreen from './SplashScreen';
-import './App.css'
+import './App.css';
+
 
 function MatrixBackground() {
   const canvasRef = useRef(null);
