@@ -5,7 +5,7 @@ const uri = process.env.MONGODB_URL;
 const dbName = process.env.MONGODB_DATABASE || "portfolio-messages";
 const collectionName = process.env.MONGODB_COLLECTION || "messages";
 
-const transporter = nodemailer.createTransport({
+const transporter = nodemailer.createTransporter({
   service: "gmail",
   auth: {
     user: process.env.EMAIL_USER, 

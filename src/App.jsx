@@ -255,63 +255,255 @@ function App() {
           </section>
           <br/><br/>
           <section id="contact" className="section contact">
-            <h2>Contact</h2>
-            <form
-              className="contact-form"
-              onSubmit={async (e) => {
-                e.preventDefault();
-                setFormStatus({ message: 'Sending...', type: 'sending' });
-                
-                const name = e.target[0].value;
-                const email = e.target[1].value;
-                const message = e.target[2].value;
+            <div className="contact-container" style={{
+              maxWidth: '450px',
+              margin: '0 auto',
+              padding: '2rem',
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: '12px',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              boxShadow: '0 8px 32px rgba(0, 0, 0, 0.1)'
+            }}>
+              <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: 'clamp(1.5rem, 4vw, 2rem)' }}>Get In Touch</h2>
+              
+              <form
+                className="contact-form"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '1.2rem'
+                }}
+                onSubmit={async (e) => {
+                  e.preventDefault();
+                  setFormStatus({ message: 'Sending...', type: 'sending' });
+                  
+                  const name = e.target[0].value;
+                  const email = e.target[1].value;
+                  const message = e.target[2].value;
 
-                try {
-                  const res = await fetch('/.netlify/functions/contact', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, email, message }),
-                  });
+                  try {
+                    console.log('Sending message...', { name, email: email.substring(0, 3) + '***' });
+                    
+                    const res = await fetch('/.netlify/functions/contact-simple', {
+                      method: 'POST',
+                      headers: { 
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                      },
+                      body: JSON.stringify({ name, email, message }),
+                    });
 
-                  const data = await res.json().catch(() => ({}));
-                  if (res.ok) {
-                    setFormStatus({ message: '✅ Message sent successfully!', type: 'success' });
-                    e.target.reset();
-                  } else {
-                    setFormStatus({ message: `❌ Failed to send: ${data.error || res.status}`, type: 'error' });
+                    console.log('Response status:', res.status);
+                    
+                    let data = {};
+                    try {
+                      data = await res.json();
+                    } catch (jsonError) {
+                      console.error('JSON parse error:', jsonError);
+                      data = { error: 'Invalid response format' };
+                    }
+                    
+                    console.log('Response data:', data);
+
+                    if (res.ok) {
+                      setFormStatus({ message: '✅ Message sent successfully!', type: 'success' });
+                      e.target.reset();
+                    } else {
+                      const errorMsg = data.error || `Server error: ${res.status}`;
+                      setFormStatus({ message: `❌ Failed to send: ${errorMsg}`, type: 'error' });
+                    }
+                  } catch (err) {
+                    console.error('Fetch error:', err);
+                    setFormStatus({ message: '❌ Network error - please check your connection', type: 'error' });
                   }
-                } catch (err) {
-                  console.error('Fetch error:', err);
-                  setFormStatus({ message: '❌ Network error - please try again', type: 'error' });
-                }
-              }}
-            >
-              <input type="text" placeholder="Your Name"  style={{ fontFamily: 'monospace' }} required />
-              <input type="email" placeholder="Your Email"  style={{ fontFamily: 'monospace' }} required />
-              <textarea placeholder="Your Message" style={{ fontFamily: 'monospace' }} required /> 
-              <button type="submit">Send Message</button>
-              {formStatus.message && (
-                <div 
-                  className={`form-status ${formStatus.type}`}
-                  style={{
-                    marginTop: '1rem',
-                    padding: '0.75rem',
-                    borderRadius: '4px',
-                    textAlign: 'center',
+                }}
+              >
+                <input 
+                  type="text" 
+                  placeholder="Your Name" 
+                  style={{ 
+                    width: 'calc(100% - 2rem)',
+                    maxWidth: '100%',
+                    padding: '0.7rem 0.8rem',
                     fontFamily: 'monospace',
-                    backgroundColor: formStatus.type === 'success' ? '#d4edda' : formStatus.type === 'error' ? '#f8d7da' : '#d1ecf1',
-                    color: formStatus.type === 'success' ? '#155724' : formStatus.type === 'error' ? '#721c24' : '#0c5460',
-                    border: `1px solid ${formStatus.type === 'success' ? '#c3e6cb' : formStatus.type === 'error' ? '#f5c6cb' : '#bee5eb'}`
+                    fontSize: '0.85rem',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '6px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    color: '#fff',
+                    outline: 'none',
+                    transition: 'border-color 0.3s ease',
+                    boxSizing: 'border-box'
+                  }} 
+                  required 
+                />
+                <input 
+                  type="email" 
+                  placeholder="Your Email" 
+                  style={{ 
+                    width: 'calc(100% - 2rem)',
+                    maxWidth: '100%',
+                    padding: '0.7rem 0.8rem',
+                    fontFamily: 'monospace',
+                    fontSize: '0.85rem',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '6px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    color: '#fff',
+                    outline: 'none',
+                    transition: 'border-color 0.3s ease',
+                    boxSizing: 'border-box'
+                  }} 
+                  required 
+                />
+                <textarea 
+                  placeholder="Your Message" 
+                  rows="5"
+                  style={{ 
+                    width: 'calc(100% - 2rem)',
+                    maxWidth: '100%',
+                    padding: '0.8rem 1rem',
+                    fontFamily: 'monospace',
+                    fontSize: '0.9rem',
+                    border: '2px solid rgba(255, 255, 255, 0.2)',
+                    borderRadius: '8px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                    color: '#fff',
+                    outline: 'none',
+                    transition: 'border-color 0.3s ease',
+                    resize: 'vertical',
+                    minHeight: '120px',
+                    boxSizing: 'border-box'
+                  }} 
+                  required 
+                />
+                <button 
+                  type="submit"
+                  style={{
+                    width: 'fit-content',
+                    margin: '0 auto',
+                    padding: '1rem 2.5rem',
+                    fontSize: '1rem',
+                    fontFamily: 'monospace',
+                    fontWeight: 'bold',
+                    color: '#fff',
+                    background: 'linear-gradient(135deg, #3a229c 0%, #169ed0 100%)',
+                    border: 'none',
+                    borderRadius: '12px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                    boxShadow: '0 4px 15px rgba(58, 34, 156, 0.3)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    letterSpacing: '0.5px'
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.background = 'linear-gradient(135deg, #2a1a7c 0%, #1280a0 100%)';
+                    e.target.style.transform = 'translateY(-3px) scale(1.02)';
+                    e.target.style.boxShadow = '0 8px 25px rgba(58, 34, 156, 0.4)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.background = 'linear-gradient(135deg, #3a229c 0%, #169ed0 100%)';
+                    e.target.style.transform = 'translateY(0) scale(1)';
+                    e.target.style.boxShadow = '0 4px 15px rgba(58, 34, 156, 0.3)';
+                  }}
+                  onMouseDown={(e) => {
+                    e.target.style.transform = 'translateY(-1px) scale(0.98)';
+                  }}
+                  onMouseUp={(e) => {
+                    e.target.style.transform = 'translateY(-3px) scale(1.02)';
                   }}
                 >
-                  {formStatus.message}
-                </div>
-              )}
-            </form>
-            <h3 style={{ textAlign: 'center' }}>OR</h3>
-            <h3>Contact me via WhatsApp<a href="https://wa.me/919458124662" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp" style={{ width: '40px', height: '40px', verticalAlign: 'middle', marginLeft: '10px' }} />
-            </a></h3>
+                  <span style={{ position: 'relative', zIndex: 1 }}>
+                    Send Message ✉️
+                  </span>
+                </button>
+                {formStatus.message && (
+                  <div 
+                    className={`form-status ${formStatus.type}`}
+                    style={{
+                      marginTop: '0.5rem',
+                      padding: '0.75rem',
+                      borderRadius: '8px',
+                      textAlign: 'center',
+                      fontFamily: 'monospace',
+                      fontSize: '0.9rem',
+                      backgroundColor: formStatus.type === 'success' ? 'rgba(40, 167, 69, 0.15)' : formStatus.type === 'error' ? 'rgba(220, 53, 69, 0.15)' : 'rgba(23, 162, 184, 0.15)',
+                      color: formStatus.type === 'success' ? '#28a745' : formStatus.type === 'error' ? '#dc3545' : '#17a2b8',
+                      border: `1px solid ${formStatus.type === 'success' ? '#28a745' : formStatus.type === 'error' ? '#dc3545' : '#17a2b8'}`
+                    }}
+                  >
+                    {formStatus.message}
+                  </div>
+                )}
+              </form>
+              
+              <div className="contact-divider" style={{
+                display: 'flex',
+                alignItems: 'center',
+                margin: '2rem 0',
+                color: 'rgba(255, 255, 255, 0.6)'
+              }}>
+                <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.2)' }}></div>
+                <span style={{ margin: '0 1rem', fontSize: '0.9rem', fontFamily: 'monospace' }}>OR</span>
+                <div style={{ flex: 1, height: '1px', backgroundColor: 'rgba(255, 255, 255, 0.2)' }}></div>
+              </div>
+              
+              <div className="alternative-contact" style={{
+                textAlign: 'center',
+                padding: '1rem',
+                backgroundColor: 'rgba(255, 255, 255, 0.03)',
+                borderRadius: '8px',
+                border: '1px solid rgba(255, 255, 255, 0.1)'
+              }}>
+                <p style={{ 
+                  margin: '0 0 1rem 0', 
+                  fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
+                  color: 'rgba(255, 255, 255, 0.8)',
+                  fontFamily: 'monospace'
+                }}>
+                  Prefer instant messaging?
+                </p>
+                <a 
+                  href="https://wa.me/919458124662" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label="WhatsApp"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    padding: '0.6rem 1.2rem',
+                    backgroundColor: '#25D366',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    borderRadius: '25px',
+                    fontSize: '0.9rem',
+                    fontFamily: 'monospace',
+                    fontWeight: 'bold',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseOver={(e) => {
+                    e.target.style.backgroundColor = '#20b358';
+                    e.target.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.target.style.backgroundColor = '#25D366';
+                    e.target.style.transform = 'scale(1)';
+                  }}
+                >
+                  <img 
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" 
+                    alt="WhatsApp" 
+                    style={{ 
+                      width: '20px', 
+                      height: '20px'
+                    }} 
+                  />
+                  WhatsApp Me
+                </a>
+              </div>
+            </div>
           </section>
           <br/><br/>
           <footer className="footer">
