@@ -7,8 +7,8 @@ const SplashScreen = ({ onFinish }) => {
     const timer = setTimeout(() => {
       const splash = document.querySelector('.splash-screen');
       if (splash) splash.classList.add('fade-out');
-      setTimeout(onFinish, 600);
-    }, 3400); 
+      setTimeout(onFinish, 400);
+    }, 3000); 
     return () => clearTimeout(timer);
   }, [onFinish]);
 

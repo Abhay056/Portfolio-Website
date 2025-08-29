@@ -210,6 +210,12 @@ body {
   font-size: 0.98rem;
 }
 
+.project-item img {
+  width: 70%;
+  height: 80%;
+  border-radius: 8px;
+}
+
 .project {
   background: var(--bg-gradient);
   border-radius: 8px;
@@ -316,15 +322,26 @@ body {
   margin: 0 auto 1rem auto;
 }
 
-.cp button, .gssoc button {
+.cp button {
   background: linear-gradient(135deg, #030865 0%, #2e09d15c 100%);
   color: #ffffff;
   transition: 0.3s ease;
 }
 
-.cp button:hover, .gssoc button:hover {  
+.cp button:hover {  
   box-shadow: 0px 0px 30px white;
   transform: scale(1.05);
+}
+
+.am {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .amlss, .gssoc {
@@ -340,6 +357,8 @@ body {
   border-radius: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,0.07);
   transition: 0.3s ease;
+  flex: 1;
+  max-width: 450px;
 }
 
 .amlss:hover, .gssoc:hover {
@@ -356,6 +375,22 @@ body {
 .gssoc img {
   border-radius: 8px;
   box-shadow: 0 0 0 5px rgb(196, 77, 77);
+}
+
+.contact-container {
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 12px;
+  background: var(--bg-gradient);
+  box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  transition: 0.3s ease;
+}
+
+.contact-container:hover {
+  background: var(--bg-gradient-hover);
+  box-shadow: 0px 0px 30px var(--highlighter);
+  transform: scale(1.03);
 }
 
 .contact-form {
@@ -375,20 +410,23 @@ body {
   resize: none;
 }
 
-.contact-form button {
-  background: var(--bg-gradient);
-  color: #ffffff;
+.contact-container button {
+  width: fit-content;
+  margin: 0 auto;
+  padding: 1rem 2.5rem;
+  font-size: 1rem;
+  font-family: monospace;
   font-weight: bold;
+  background: linear-gradient(135deg, #030865 0%, #2e09d15c 100%);
+  color: #ffffff;
   border: none;
   border-radius: 6px;
-  padding: 0.8rem;
   cursor: pointer;
   transition: 0.5s ease;
 }
 
-.contact-form button:hover {
-  background: var(--bg-gradient-hover);
-  box-shadow: 0px 0px 30px var(--highlighter);
+.contact-container button:hover {
+  box-shadow: 0px 0px 30px white;
   transform: scale(1.05);
 }
 
@@ -406,6 +444,12 @@ body {
   color: #ffffff;
   background-color: transparent;
   transition: width 0.5s, height 0.5s, margin-left 0.5s, color 0.5s, background-color 0.5s, box-shadow 0.5s, transform 0.5s;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 
 .footer p {
@@ -457,6 +501,15 @@ body {
   color: #232526;
   box-shadow: 0px 0px 30px var(--highlighter);
   transform: scale(1.08);
+}
+
+.about-photo {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 12px rgba(30,40,80,0.18);
+  transition: 0.5s ease;
 }
 
 .about-photo {
@@ -693,6 +746,12 @@ body {
   .amlss, .gssoc {
     font-size: clamp(0.4rem, 1.5vw, 0.8rem);
     width: 80%;
+    max-width: 100%;
+  }
+  
+  .am {
+    flex-direction: column;
+    align-items: center;
   }
 }
 
