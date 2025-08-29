@@ -12,10 +12,18 @@ function MatrixBackground() {
     let animationFrameId;
     let width = window.innerWidth;
     let height = window.innerHeight;
-    canvas.width = width;
-    canvas.height = height;
+    
+    // Set initial canvas size
+    const setCanvasSize = () => {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    };
+    
+    setCanvasSize();
 
-    const fontSize = 18;
+    const fontSize = Math.max(14, Math.min(18, width / 80)); // Responsive font size
     const columns = Math.floor(width / fontSize);
     const drops = Array(columns).fill(1);
     const chars = '01010111111111111111000000000000000000000000000000000101010101010101010010001010101010100101011110001101010001010010010101010010010001010010';
@@ -39,11 +47,17 @@ function MatrixBackground() {
     draw();
 
     function handleResize() {
-      width = window.innerWidth;
-      height = window.innerHeight;
-      canvas.width = width;
-      canvas.height = height;
+      setCanvasSize();
+      // Recalculate drops array for new width
+      const newColumns = Math.floor(width / fontSize);
+      if (newColumns !== columns) {
+        drops.length = newColumns;
+        for (let i = 0; i < newColumns; i++) {
+          if (drops[i] === undefined) drops[i] = 1;
+        }
+      }
     }
+    
     window.addEventListener('resize', handleResize);
 
     return () => {
@@ -70,9 +84,27 @@ function MatrixBackground() {
 }
 
 function App() {
-  const [navOpen, setNavOpen] = useState(true);
+  // Check if device is PC (desktop) based on screen width
+  const [navOpen, setNavOpen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth > 1024; // Open by default only on PC (>1024px)
+    }
+    return false;
+  });
   const [showSplash, setShowSplash] = useState(true);
   const [formStatus, setFormStatus] = useState({ message: '', type: '' });
+
+  // Handle window resize to auto-close navbar on smaller screens
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 1024) {
+        setNavOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="app-root">
@@ -99,13 +131,13 @@ function App() {
             <h1>Abhay Bahuguna</h1>
             <p className="subtitle">Full Stack  Developer</p>
           </header>
-          <section id="about" className="section about" style={{ display: 'flex', alignItems: 'center', gap: '2rem', position: 'relative' }}>
+          <section id="about" className="section about">
             <img 
               src="/dp.jpg" 
               alt="Profile" 
               className="about-photo"
             />
-            <div>
+            <div className="about-content">
               <h2>About Me</h2>
               <p align="justify">I'm a Full Stack Developer who loves building websites and applications that are both useful and enjoyable to use. I work with technologies like Python, React, Next.js, and I’m always curious to learn new tools and frameworks. I enjoy solving problems, whether it’s through real-world projects or competitive programming. My aim is to create applications that are efficient, scalable, and make a real difference for people.</p>
 <p align="justify">Feel free to explore my portfolio and reach out to collaborate!</p>

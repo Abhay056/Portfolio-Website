@@ -8,7 +8,7 @@ const collectionName = process.env.MONGODB_COLLECTION || "messages";
 // Create nodemailer transporter only if email credentials exist
 let transporter = null;
 if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
-  transporter = nodemailer.createTransporter({
+  transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
       user: process.env.EMAIL_USER, 
