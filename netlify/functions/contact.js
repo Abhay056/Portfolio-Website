@@ -5,6 +5,17 @@ const uri = process.env.MONGODB_URL;
 const dbName = process.env.MONGODB_DATABASE || "portfolio-messages";
 const collectionName = process.env.MONGODB_COLLECTION || "messages";
 
+// Security headers helper
+const getSecurityHeaders = () => ({
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "Content-Type, Accept",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "X-XSS-Protection": "1; mode=block",
+  "Referrer-Policy": "strict-origin-when-cross-origin"
+});
+
 // Create nodemailer transporter only if email credentials exist
 let transporter = null;
 if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
@@ -22,11 +33,7 @@ export async function handler(event, context) {
   if (event.httpMethod === "OPTIONS") {
     return {
       statusCode: 200,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type, Accept",
-        "Access-Control-Allow-Methods": "POST, OPTIONS",
-      },
+      headers: getSecurityHeaders(),
       body: JSON.stringify({}),
     };
   }
@@ -34,10 +41,7 @@ export async function handler(event, context) {
   if (event.httpMethod !== "POST") {
     return {
       statusCode: 405,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type, Accept",
-      },
+      headers: getSecurityHeaders(),
       body: JSON.stringify({ error: "Method Not Allowed" }),
     };
   }
@@ -58,30 +62,37 @@ export async function handler(event, context) {
       console.error("JSON parse error:", parseError);
       return {
         statusCode: 400,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "Content-Type, Accept",
-        },
+        headers: getSecurityHeaders(),
         body: JSON.stringify({ error: "Invalid JSON in request body" }),
       };
     }
 
     const { name, email, message } = requestBody;
 
+    // Sanitize inputs to prevent XSS
+    const sanitizeInput = (input) => {
+      if (typeof input !== 'string') return '';
+      return input
+        .replace(/[<>]/g, '') // Remove potential HTML tags
+        .trim()
+        .substring(0, 1000); // Limit length
+    };
+
+    const sanitizedName = sanitizeInput(name);
+    const sanitizedEmail = sanitizeInput(email);
+    const sanitizedMessage = sanitizeInput(message);
+
     // Validate required fields
-    if (!name || !email || !message) {
+    if (!sanitizedName || !sanitizedEmail || !sanitizedMessage) {
       return {
         statusCode: 400,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "Content-Type, Accept",
-        },
+        headers: getSecurityHeaders(),
         body: JSON.stringify({
           error: "Missing required fields",
           details: {
-            name: !name ? "Name is required" : null,
-            email: !email ? "Email is required" : null,
-            message: !message ? "Message is required" : null,
+            name: !sanitizedName ? "Name is required" : null,
+            email: !sanitizedEmail ? "Email is required" : null,
+            message: !sanitizedMessage ? "Message is required" : null,
           }
         }),
       };
@@ -89,23 +100,20 @@ export async function handler(event, context) {
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
+    if (!emailRegex.test(sanitizedEmail)) {
       return {
         statusCode: 400,
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Headers": "Content-Type, Accept",
-        },
+        headers: getSecurityHeaders(),
         body: JSON.stringify({ error: "Invalid email format" }),
       };
     }
 
-    console.log("Processing contact form:", { name, email: email.substring(0, 3) + "***" });
+    console.log("Processing contact form:", { name: sanitizedName, email: sanitizedEmail.substring(0, 3) + "***" });
 
     const newMessage = {
-      name,
-      email,
-      message,
+      name: sanitizedName,
+      email: sanitizedEmail,
+      message: sanitizedMessage,
       createdAt: new Date(),
     };
 
@@ -155,10 +163,7 @@ export async function handler(event, context) {
 
     return {
       statusCode: 201,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type, Accept",
-      },
+      headers: getSecurityHeaders(),
       body: JSON.stringify({
         success: true,
         message: "Message received successfully!",
@@ -170,10 +175,7 @@ export async function handler(event, context) {
     console.error("Error processing contact form:", error);
     return {
       statusCode: 500,
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Headers": "Content-Type, Accept",
-      },
+      headers: getSecurityHeaders(),
       body: JSON.stringify({ 
         error: "Internal server error. Please try again later.",
         details: process.env.NODE_ENV === 'development' ? error.message : undefined
