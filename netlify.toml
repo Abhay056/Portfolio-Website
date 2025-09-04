@@ -8,7 +8,7 @@
     X-Content-Type-Options = "nosniff"
     X-XSS-Protection = "1; mode=block"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' fonts.googleapis.com; img-src 'self' data: https: blob: icongr.am img.icons8.com github.githubassets.com upload.wikimedia.org cdn.iconscout.com cdn.codechef.com encrypted-tbn0.gstatic.com media.licdn.com; font-src 'self' data: https: fonts.gstatic.com; connect-src 'self' https: *.netlify.app; frame-ancestors 'none'; object-src 'none'; base-uri 'self';"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https: blob:; font-src 'self' data: https:; connect-src 'self' https: *.netlify.app; frame-ancestors 'none'; object-src 'none'; base-uri 'self';"
     Permissions-Policy = "geolocation=(), microphone=(), camera=()"
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
 

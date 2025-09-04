@@ -466,10 +466,10 @@ function App() {
                   Prefer instant messaging?
                 </p>
                 <a 
-                  href="https://wa.me/919458124662?text=Hello%20Abhay%2C%20I%20visited%20your%20portfolio%20website%20and%20would%20like%20to%20connect" 
+                  href="https://wa.me/919458124662" 
                   target="_blank" 
-                  rel="noopener noreferrer nofollow" 
-                  aria-label="WhatsApp Contact - Abhay Bahuguna"
+                  rel="noopener noreferrer" 
+                  aria-label="WhatsApp"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -511,24 +511,6 @@ function App() {
           </section>
           <br/><br/>
           <footer className="footer">
-            <div className="verification-notice" style={{
-              textAlign: 'center',
-              padding: '1rem',
-              marginBottom: '1rem',
-              backgroundColor: 'rgba(40, 167, 69, 0.1)',
-              border: '1px solid rgba(40, 167, 69, 0.3)',
-              borderRadius: '8px',
-              color: 'rgba(255, 255, 255, 0.9)',
-              fontSize: '0.85rem',
-              fontFamily: 'monospace'
-            }}>
-              <p style={{ margin: '0 0 0.5rem 0' }}>
-                🔒 This is the official portfolio website of Abhay Bahuguna
-              </p>
-              <p style={{ margin: '0', fontSize: '0.75rem', opacity: '0.8' }}>
-                Verified Student at Graphic Era Hill University, Dehradun
-              </p>
-            </div>
             <div className="footer-github-buttons">
               <a
                 rel="noreferrer"
