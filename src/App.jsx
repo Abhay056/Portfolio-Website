@@ -120,7 +120,7 @@ function App() {
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target='blank'>My Resume</a>
+            <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">My Resume</a>
             <a href="#contact">Contact</a>
           </nav>
         )}
@@ -143,16 +143,16 @@ function App() {
 <p align="justify">Feel free to explore my portfolio and reach out to collaborate!</p>
               <div className="social-links">
                 <a href="https://www.linkedin.com/in/abhay-bahuguna" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                  <img src="https://icongr.am/devicon/linkedin-original.svg?size=128&color=currentColor"/>
+                  <img src="https://icongr.am/devicon/linkedin-original.svg?size=128&color=currentColor" alt="LinkedIn"/>
                 </a>
                 <a href="mailto:abjun504@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Gmail">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.065l-11.985-8.065v16h23.97v-16l-11.985 8.065zm11.985-10.065h-23.97l11.985 8.065 11.985-8.065z"/></svg>
                 </a>
-                <a href="https://github.com/Abhay056">
-                  <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png"/>
+                <a href="https://github.com/Abhay056" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                  <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub"/>
                 </a>
                 <a href="https://instagram.com/abhayx056" target="_blank" rel="noopener noreferrer" aria-label="Codeforces">
-                  <img src="https://img.icons8.com/?size=100&id=BrU2BBoRXiWq&format=png&color=000000  "/>
+                  <img src="https://img.icons8.com/?size=100&id=BrU2BBoRXiWq&format=png&color=000000" alt="Instagram"/>
                 </a>
               </div>  
             </div>
@@ -266,7 +266,7 @@ function App() {
                   </div>
                   <div className='cp-card-leet'>   
                     <b>LeetCode</b>                          
-                    <img src="data:image/png;base64,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" alt="CodeChef" />
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" />
                     <a href="https://leetcode.com/u/abhay5055" target="_blank" rel="noopener noreferrer">
                       <button>Show Profile</button>
                     </a>
@@ -307,7 +307,10 @@ function App() {
                   const message = e.target[2].value;
 
                   try {
-                    console.log('Sending message...', { name, email: email.substring(0, 3) + '***' });
+                    // Only log in development
+                    if (process.env.NODE_ENV === 'development') {
+                      console.log('Sending message...', { name, email: email.substring(0, 3) + '***' });
+                    }
                     
                     const res = await fetch('/.netlify/functions/contact', {
                     // const res = await fetch('http://localhost:5000/api/contact', {  //For running server locally
@@ -319,17 +322,23 @@ function App() {
                       body: JSON.stringify({ name, email, message }),
                     });
 
-                    console.log('Response status:', res.status);
+                    if (process.env.NODE_ENV === 'development') {
+                      console.log('Response status:', res.status);
+                    }
                     
                     let data = {};
                     try {
                       data = await res.json();
                     } catch (jsonError) {
-                      console.error('JSON parse error:', jsonError);
+                      if (process.env.NODE_ENV === 'development') {
+                        console.error('JSON parse error:', jsonError);
+                      }
                       data = { error: 'Invalid response format' };
                     }
                     
-                    console.log('Response data:', data);
+                    if (process.env.NODE_ENV === 'development') {
+                      console.log('Response data:', data);
+                    }
 
                     if (res.ok) {
                       setFormStatus({ message: '✅ Message sent successfully!', type: 'success' });
@@ -339,7 +348,9 @@ function App() {
                       setFormStatus({ message: `❌ Failed to send: ${errorMsg}`, type: 'error' });
                     }
                   } catch (err) {
-                    console.error('Fetch error:', err);
+                    if (process.env.NODE_ENV === 'development') {
+                      console.error('Fetch error:', err);
+                    }
                     setFormStatus({ message: '❌ Network error - please check your connection', type: 'error' });
                   }
                 }}
