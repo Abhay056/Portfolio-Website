@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+
+# Security
+Disallow: /.netlify/
+Disallow: /admin/
+Disallow: /.env
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://abhaybahuguna.netlify.app/sitemap.xml
+
+# Security contact
+# Visit /.well-known/security.txt for security reporting
