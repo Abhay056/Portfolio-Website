@@ -309,8 +309,8 @@ function App() {
                   try {
                     console.log('Sending message...', { name, email: email.substring(0, 3) + '***' });
                     
-                    const res = await fetch('/.netlify/functions/contact', {
-                    // const res = await fetch('http://localhost:5000/api/contact', {  //For running server locally
+                    // const res = await fetch('/.netlify/functions/contact', {
+                    const res = await fetch('http://localhost:5000/api/contact', {  //For running server locally
                       method: 'POST',
                       headers: { 
                         'Content-Type': 'application/json',
