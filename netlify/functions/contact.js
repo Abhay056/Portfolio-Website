@@ -46,6 +46,25 @@ export async function handler(event, context) {
     };
   }
 
+  // Basic rate limiting check (IP-based)
+  const clientIP = event.headers['x-forwarded-for'] || event.headers['x-real-ip'] || 'unknown';
+  const userAgent = event.headers['user-agent'] || '';
+  
+  // Block suspicious user agents
+  const suspiciousPatterns = [
+    /bot/i, /crawler/i, /spider/i, /scraper/i,
+    /curl/i, /wget/i, /python/i, /php/i
+  ];
+  
+  const isSuspicious = suspiciousPatterns.some(pattern => pattern.test(userAgent));
+  if (isSuspicious && !userAgent.includes('GoogleBot') && !userAgent.includes('BingBot')) {
+    return {
+      statusCode: 429,
+      headers: getSecurityHeaders(),
+      body: JSON.stringify({ error: "Too many requests" }),
+    };
+  }
+
   let client = null;
 
   try {
@@ -69,11 +88,15 @@ export async function handler(event, context) {
 
     const { name, email, message } = requestBody;
 
-    // Sanitize inputs to prevent XSS
+    // Sanitize inputs to prevent XSS and injection attacks
     const sanitizeInput = (input) => {
       if (typeof input !== 'string') return '';
       return input
         .replace(/[<>]/g, '') // Remove potential HTML tags
+        .replace(/javascript:/gi, '') // Remove javascript: protocols
+        .replace(/on\w+=/gi, '') // Remove event handlers
+        .replace(/&lt;script&gt;/gi, '') // Remove encoded script tags
+        .replace(/&lt;\/script&gt;/gi, '') // Remove encoded script tags
         .trim()
         .substring(0, 1000); // Limit length
     };

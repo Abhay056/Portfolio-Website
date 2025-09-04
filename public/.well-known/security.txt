@@ -1,0 +1,6 @@
+Contact: mailto:abjun504@gmail.com
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://keybase.io/abhay056/pgp_keys.asc
+Preferred-Languages: en
+Canonical: https://abhaybahuguna.netlify.app/.well-known/security.txt
+Policy: https://abhaybahuguna.netlify.app/security-policy
