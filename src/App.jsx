@@ -457,14 +457,17 @@ function App() {
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
               }}>
-                <p style={{ 
+                { <p style={{ 
                   margin: '0 0 1rem 0', 
                   fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                   color: 'rgba(255, 255, 255, 0.8)',
                   fontFamily: 'monospace'
                 }}>
-                  Prefer instant messaging?
+                  {/* Prefer instant messaging? */}
+                  Email me at <a href="mailto:abjun504@gmail.com" style={{ 
+                    color: 'cyan'}}>abjun504@gmail.com</a>
                 </p>
+                /*
                 <a 
                   href="https://wa.me/919458124662" 
                   target="_blank" 
@@ -505,7 +508,7 @@ function App() {
                     }} 
                   />
                   WhatsApp Me
-                </a>
+                </a> */}
               </div>
             </div>
           </section>
