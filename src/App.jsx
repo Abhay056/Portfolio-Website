@@ -120,7 +120,7 @@ function App() {
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">My Resume</a>
+            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>            
             <a href="#contact">Contact</a>
           </nav>
         )}
