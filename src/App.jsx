@@ -203,7 +203,7 @@ function App() {
             <h2>Projects</h2>
             <div className="project-item">
               <a href='https://github.com/Abhay056/expense-tracker-app' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Expense Tracker App (React.js, Next.js, Supabase )  [Jun '25- Jul '25]</h3>
+                <h3>Expense Tracker App (React.js, Next.js, Supabase )  [Jul 2025]</h3>
                 <img src="/expense-tracker.png" alt="Expense Tracker App" />
                 <p>
                   • Useful application for efficiently managing daily expenses with user authentication.
@@ -211,9 +211,12 @@ function App() {
                 <p>
                   • Multiple features including monthly budgets, filters, and expense summary with charts.
                 </p>
+                <p>
+                  • Implemented responsive design with real-time data synchronization and CSV export functionality.
+                </p>
               </a>
               <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr '25- Jun '25]</h3>
+                <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr 2025]</h3>
                 <img src="/compiler.png" alt="Nano C/C++ Compiler" />
                 <p>
                   • Developed an interactive Nano compiler with basic error handling.
@@ -221,24 +224,34 @@ function App() {
                 <p>
                   • Includes Lexical, Syntax and Semantic phase implementation.
                 </p>
-              </a>
-                <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
-                  <h3>Human Detector and Counter (Python, OpenCV, YOLOv8) [Aug '24- Sep '24]</h3>
-                  <img src="/human.png" alt="Human Detector and Counter" />
                 <p>
-                  •  Implemented a system that accurately detects and counts humans in real-time video streams or images.
+                  • Built a web-based interface for code compilation and interactive debugging features.
+                </p>
+              </a>
+              <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
+                <h3>Human Detector and Counter (Python, OpenCV, YOLOv8) [Aug 2024]</h3>
+                <img src="/human.png" alt="Human Detector and Counter" />
+                <p>
+                  • Implemented a system that accurately detects and counts humans in real-time video streams or images.
                 </p>
                 <p>
-                  •  Efficient solution for various applications requiring human presence monitoring.
+                  • Efficient solution for various applications requiring human presence monitoring.
+                </p>
+                <p>
+                  • Integrated tracking algorithms to maintain consistent counting across multiple frames.
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
-                <h3>Plagiarism Detection System (KMP, Hash Table) [May '24- Jun '24]</h3>
+                <h3>Plagiarism Detection System (KMP, Hash Table) [Jun 2024]</h3>
+                <img src="/plagdetect.png" alt="Plagiarism Detector" />
                 <p>
                   • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.
                 </p>
                 <p>
                   • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
+                </p>
+                <p>
+                  • Implemented similarity scoring mechanisms to provide detailed plagiarism percentage analysis.
                 </p>
               </a>
             </div>
