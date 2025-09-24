@@ -120,7 +120,7 @@ function App() {
             <a href="#skills">Skills</a>
             <a href="#education">Education</a>
             <a href="#projects">Projects</a>
-            <a href="/resume.pdf" target="_blank" rel="noopener noreferrer">Resume</a>            
+            <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">My Resume</a>
             <a href="#contact">Contact</a>
           </nav>
         )}
@@ -457,17 +457,14 @@ function App() {
                 borderRadius: '8px',
                 border: '1px solid rgba(255, 255, 255, 0.1)'
               }}>
-                { <p style={{ 
+                <p style={{ 
                   margin: '0 0 1rem 0', 
                   fontSize: 'clamp(0.9rem, 2.5vw, 1.1rem)',
                   color: 'rgba(255, 255, 255, 0.8)',
                   fontFamily: 'monospace'
                 }}>
-                  {/* Prefer instant messaging? */}
-                  Email me at <a href="mailto:abjun504@gmail.com" style={{ 
-                    color: 'cyan'}}>abjun504@gmail.com</a>
+                  Prefer instant messaging?
                 </p>
-                /*
                 <a 
                   href="https://wa.me/919458124662" 
                   target="_blank" 
@@ -508,7 +505,7 @@ function App() {
                     }} 
                   />
                   WhatsApp Me
-                </a> */}
+                </a>
               </div>
             </div>
           </section>
