@@ -265,7 +265,7 @@ function App() {
                     </a>
                   </div>
                   <div className='cp-card-leet'>   
-                    <b>LeetCode</b>                          
+                    <b>LeetCode (Knight)</b>                          
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" />
                     <a href="https://leetcode.com/u/abhay5055" target="_blank" rel="noopener noreferrer">
                       <button>Show Profile</button>
