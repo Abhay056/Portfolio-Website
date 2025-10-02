@@ -2,6 +2,80 @@ import { useEffect, useRef, useState } from 'react';
 import SplashScreen from './SplashScreen';
 import './App.css';
 
+// Hook for bidirectional scroll animations (fade in/out)
+const useScrollAnimation = () => {
+  useEffect(() => {
+    // Check if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
+    let lastScrollY = window.scrollY;
+    let isScrollingDown = true;
+
+    const observerOptions = {
+      threshold: [0, 0.1, 0.2, 0.3, 0.5, 0.7, 0.9, 1],
+      rootMargin: '0px 0px 0px 0px'
+    };
+
+    // Track scroll direction
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      isScrollingDown = currentScrollY > lastScrollY;
+      lastScrollY = currentScrollY;
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        const element = entry.target;
+        const rect = element.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        
+        // Calculate visibility
+        const elementTop = rect.top;
+        const elementBottom = rect.bottom;
+        const elementHeight = rect.height;
+        
+        // Calculate how much of the element is visible
+        const visibleTop = Math.max(elementTop, 0);
+        const visibleBottom = Math.min(elementBottom, windowHeight);
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibilityRatio = visibleHeight / elementHeight;
+        
+        // Different thresholds for fade in vs fade out
+        const fadeInThreshold = 0.2;   // 20% visible to fade in
+        const fadeOutThreshold = 0.1;  // Less than 10% visible to fade out
+        
+        if (visibilityRatio >= fadeInThreshold) {
+          // Element is sufficiently visible - animate in
+          element.classList.add('animate');
+        } else if (visibilityRatio <= fadeOutThreshold) {
+          // Element is mostly out of view - animate out
+          element.classList.remove('animate');
+        }
+        // In between thresholds: maintain current state for smooth transitions
+      });
+    }, observerOptions);
+
+    // Add scroll listener for direction tracking
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Delay the observation to avoid initial load animations
+    const timeoutId = setTimeout(() => {
+      const animatedElements = document.querySelectorAll('.fade-in, .slide-in-left, .slide-in-right, .scale-in');
+      animatedElements.forEach((el) => {
+        observer.observe(el);
+      });
+    }, 100);
+
+    return () => {
+      clearTimeout(timeoutId);
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
+  }, []);
+};
+
 
 function MatrixBackground() {
   const canvasRef = useRef(null);
@@ -84,54 +158,51 @@ function MatrixBackground() {
 }
 
 function App() {
-  // Check if device is PC (desktop) based on screen width
-  const [navOpen, setNavOpen] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth > 1024; // Open by default only on PC (>1024px)
-    }
-    return false;
-  });
+  // Navbar is initially closed for all devices - only show hamburger icon
+  const [navOpen, setNavOpen] = useState(false);
   const [showSplash, setShowSplash] = useState(true);
   const [formStatus, setFormStatus] = useState({ message: '', type: '' });
 
-  // Handle window resize to auto-close navbar on smaller screens
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth <= 1024) {
-        setNavOpen(false);
-      }
-    };
+  // Initialize scroll animations
+  useScrollAnimation();
 
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  // No auto-resize handler needed since navbar starts closed
 
   return (
     <div className="app-root">
       {showSplash && <SplashScreen onFinish={() => setShowSplash(false)} />}
       <MatrixBackground />
-      <div className={`vertical-navbar${navOpen ? ' open' : ''}`} style={{left: 0, right: 'auto'}}>
-        <button className="nav-toggle" onClick={() => setNavOpen((v) => !v)} aria-label="Toggle navigation">
-          {navOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
-        </button>
-        {navOpen && (
-          <nav className="nav-links">
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#education">Education</a>
-            <a href="#projects">Projects</a>
-            <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">My Resume</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        )}
-      </div>
+      {/* Hamburger menu button - always visible */}
+      <button className="nav-toggle" onClick={() => setNavOpen((v) => !v)} aria-label="Toggle navigation">
+        {navOpen ? <span>&#10005;</span> : <span>&#9776;</span>}
+      </button>
+      
+      {/* Navbar - only visible when open */}
+      {navOpen && (
+        <>
+          {/* Backdrop overlay */}
+          <div className="navbar-backdrop" onClick={() => setNavOpen(false)}></div>
+          
+          {/* Sidebar navbar */}
+          <div className="vertical-navbar open">
+            <nav className="nav-links">
+              <a href="#about" onClick={() => setNavOpen(false)}>About</a>
+              <a href="#skills" onClick={() => setNavOpen(false)}>Skills</a>
+              <a href="#education" onClick={() => setNavOpen(false)}>Education</a>
+              <a href="#projects" onClick={() => setNavOpen(false)}>Projects</a>
+              <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">My Resume</a>
+              <a href="#contact" onClick={() => setNavOpen(false)}>Contact</a>
+            </nav>
+          </div>
+        </>
+      )}
       <div className="portfolio-center-wrapper">
         <div className="portfolio-container">
-          <header className="header">
+          <header className="header fade-in animate">
             <h1>Abhay Bahuguna</h1>
             <p className="subtitle">Full Stack  Developer</p>
           </header>
-          <section id="about" className="section about">
+          <section id="about" className="section about slide-in-left">
             <img 
               src="/dp.jpg" 
               alt="Profile" 
@@ -141,49 +212,49 @@ function App() {
               <h2>About Me</h2>
               <p align="justify">I'm a Full Stack Developer who loves building websites and applications that are both useful and enjoyable to use. I work with technologies like Python, React, Next.js, and I’m always curious to learn new tools and frameworks. I enjoy solving problems, whether it’s through real-world projects or competitive programming. My aim is to create applications that are efficient, scalable, and make a real difference for people.</p>
 <p align="justify">Feel free to explore my portfolio and reach out to collaborate!</p>
-              <div className="social-links">
-                <a href="https://www.linkedin.com/in/abhay-bahuguna" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+              <div className="social-links fade-in stagger-3">
+                <a href="https://www.linkedin.com/in/abhay-bahuguna" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="scale-in stagger-1">
                   <img src="https://icongr.am/devicon/linkedin-original.svg?size=128&color=currentColor" alt="LinkedIn"/>
                 </a>
-                <a href="mailto:abjun504@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Gmail">
+                <a href="mailto:abjun504@gmail.com" target="_blank" rel="noopener noreferrer" aria-label="Gmail" className="scale-in stagger-2">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 13.065l-11.985-8.065v16h23.97v-16l-11.985 8.065zm11.985-10.065h-23.97l11.985 8.065 11.985-8.065z"/></svg>
                 </a>
-                <a href="https://github.com/Abhay056" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <a href="https://github.com/Abhay056" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="scale-in stagger-3">
                   <img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub"/>
                 </a>
-                <a href="https://instagram.com/abhayx056" target="_blank" rel="noopener noreferrer" aria-label="Codeforces">
+                <a href="https://instagram.com/abhayx056" target="_blank" rel="noopener noreferrer" aria-label="Codeforces" className="scale-in stagger-4">
                   <img src="https://img.icons8.com/?size=100&id=BrU2BBoRXiWq&format=png&color=000000" alt="Instagram"/>
                 </a>
               </div>  
             </div>
           </section>
           <br/><br/>
-          <section id="skills" className="section skills">
+          <section id="skills" className="section skills fade-in">
             <h2>Technical Skills</h2>
             <br/>
             <ul className="skills-list">
-              <li><span className="skill-icon"><img src="https://img.icons8.com/?size=128&id=YX03OUiHE3rz&format=png&color=000000" alt="Python" /><span className="skill-tooltip">Python</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/c-original.svg?size=128&color=currentColor" alt="C" /><span className="skill-tooltip">C</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/cplusplus-original.svg?size=128&color=currentColor" alt="C++" /><span className="skill-tooltip">C++</span></span></li>
-              <li><span className="skill-icon"><img src="https://img.icons8.com/?size=128&id=lTKW3iI3wIT0&format=png&color=000000" alt="Java" /><span className="skill-tooltip">Java</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor" alt="JavaScript" /><span className="skill-tooltip">JavaScript</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/react-original.svg?size=128&color=currentColor" alt="React" /><span className="skill-tooltip">React.js</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor" alt="TypeScript" /><span className="skill-tooltip">TypeScript</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/nodejs-original.svg?size=128&color=currentColor" alt="Node.js" /><span className="skill-tooltip">Node.js</span></span></li>
-              <li><span className="skill-icon"><img src="https://img.icons8.com/?size=128&id=MWiBjkuHeMVq&format=png&color=000000" alt="Next.js" /><span className="skill-tooltip">Next.js</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/express-original.svg?size=128&color=currentColor" alt="Express.js" /><span className="skill-tooltip">Express.js</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/html5-original.svg?size=128&color=currentColor" alt="HTML5" /><span className="skill-tooltip">HTML5</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/css3-original.svg?size=128&color=currentColor" alt="CSS3" /><span className="skill-tooltip">CSS3</span></span></li>
-              <li><span className="skill-icon"><img src="https://img.icons8.com/?size=128&id=WoopfRcDj3RF&format=png&color=000000" alt="Tailwind CSS" /><span className="skill-tooltip">Tailwind CSS</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/mongodb-original.svg?size=128&color=currentColor" alt="MongoDB" /><span className="skill-tooltip">MongoDB</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/oracle-original.svg?size=128&color=currentColor" alt="Oracle" /><span className="skill-tooltip">Oracle</span></span></li>
-              <li><span className="skill-icon"><img src="https://icongr.am/devicon/git-original.svg?size=128&color=currentColor" alt="Git" /><span className="skill-tooltip">Git</span></span></li>
-              <li><span className="skill-icon"><img src="https://img.icons8.com/?size=128&id=39858&format=png&color=000000" alt="MySQL" /><span className="skill-tooltip">MySQL</span></span></li>
-              <li><span className='skill-icon'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" alt="Android" /><span className="skill-tooltip">Android</span></span></li>
+              <li><span className="skill-icon scale-in stagger-1"><img src="https://img.icons8.com/?size=128&id=YX03OUiHE3rz&format=png&color=000000" alt="Python" /><span className="skill-tooltip">Python</span></span></li>
+              <li><span className="skill-icon scale-in stagger-2"><img src="https://icongr.am/devicon/c-original.svg?size=128&color=currentColor" alt="C" /><span className="skill-tooltip">C</span></span></li>
+              <li><span className="skill-icon scale-in stagger-3"><img src="https://icongr.am/devicon/cplusplus-original.svg?size=128&color=currentColor" alt="C++" /><span className="skill-tooltip">C++</span></span></li>
+              <li><span className="skill-icon scale-in stagger-4"><img src="https://img.icons8.com/?size=128&id=lTKW3iI3wIT0&format=png&color=000000" alt="Java" /><span className="skill-tooltip">Java</span></span></li>
+              <li><span className="skill-icon scale-in stagger-5"><img src="https://icongr.am/devicon/javascript-original.svg?size=128&color=currentColor" alt="JavaScript" /><span className="skill-tooltip">JavaScript</span></span></li>
+              <li><span className="skill-icon scale-in stagger-6"><img src="https://icongr.am/devicon/react-original.svg?size=128&color=currentColor" alt="React" /><span className="skill-tooltip">React.js</span></span></li>
+              <li><span className="skill-icon scale-in stagger-1"><img src="https://icongr.am/devicon/typescript-original.svg?size=128&color=currentColor" alt="TypeScript" /><span className="skill-tooltip">TypeScript</span></span></li>
+              <li><span className="skill-icon scale-in stagger-2"><img src="https://icongr.am/devicon/nodejs-original.svg?size=128&color=currentColor" alt="Node.js" /><span className="skill-tooltip">Node.js</span></span></li>
+              <li><span className="skill-icon scale-in stagger-3"><img src="https://img.icons8.com/?size=128&id=MWiBjkuHeMVq&format=png&color=000000" alt="Next.js" /><span className="skill-tooltip">Next.js</span></span></li>
+              <li><span className="skill-icon scale-in stagger-4"><img src="https://icongr.am/devicon/express-original.svg?size=128&color=currentColor" alt="Express.js" /><span className="skill-tooltip">Express.js</span></span></li>
+              <li><span className="skill-icon scale-in stagger-5"><img src="https://icongr.am/devicon/html5-original.svg?size=128&color=currentColor" alt="HTML5" /><span className="skill-tooltip">HTML5</span></span></li>
+              <li><span className="skill-icon scale-in stagger-6"><img src="https://icongr.am/devicon/css3-original.svg?size=128&color=currentColor" alt="CSS3" /><span className="skill-tooltip">CSS3</span></span></li>
+              <li><span className="skill-icon scale-in stagger-1"><img src="https://img.icons8.com/?size=128&id=WoopfRcDj3RF&format=png&color=000000" alt="Tailwind CSS" /><span className="skill-tooltip">Tailwind CSS</span></span></li>
+              <li><span className="skill-icon scale-in stagger-2"><img src="https://icongr.am/devicon/mongodb-original.svg?size=128&color=currentColor" alt="MongoDB" /><span className="skill-tooltip">MongoDB</span></span></li>
+              <li><span className="skill-icon scale-in stagger-3"><img src="https://icongr.am/devicon/oracle-original.svg?size=128&color=currentColor" alt="Oracle" /><span className="skill-tooltip">Oracle</span></span></li>
+              <li><span className="skill-icon scale-in stagger-4"><img src="https://icongr.am/devicon/git-original.svg?size=128&color=currentColor" alt="Git" /><span className="skill-tooltip">Git</span></span></li>
+              <li><span className="skill-icon scale-in stagger-5"><img src="https://img.icons8.com/?size=128&id=39858&format=png&color=000000" alt="MySQL" /><span className="skill-tooltip">MySQL</span></span></li>
+              <li><span className='skill-icon scale-in stagger-6'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" alt="Android" /><span className="skill-tooltip">Android</span></span></li>
             </ul>
           </section>
           <br/><br/>
-          <section id="education" className="section education">
+          <section id="education" className="section education slide-in-right">
             <h2>Education</h2>
             <div className="education-item">
               <div className='col'>
@@ -199,10 +270,10 @@ function App() {
             </div>
           </section>
           <br/><br/>
-          <section id="projects" className="section projects">
+          <section id="projects" className="section projects fade-in">
             <h2>Projects</h2>
             <div className="project-item">
-              <a href='https://github.com/Abhay056/expense-tracker-app' target="_blank" rel="noopener noreferrer" className="project project-link">
+              <a href='https://github.com/Abhay056/expense-tracker-app' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-1">
                 <h3>Expense Tracker App (React.js, Next.js, Supabase )  [Jul 2025]</h3>
                 <img src="/expense-tracker.png" alt="Expense Tracker App" />
                 <p>
@@ -215,7 +286,7 @@ function App() {
                   • Implemented responsive design with real-time data synchronization and CSV export functionality.
                 </p>
               </a>
-              <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link">
+              <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-2">
                 <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr 2025]</h3>
                 <img src="/compiler.png" alt="Nano C/C++ Compiler" />
                 <p>
@@ -228,7 +299,7 @@ function App() {
                   • Built a web-based interface for code compilation and interactive debugging features.
                 </p>
               </a>
-              <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link">
+              <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-3">
                 <h3>Human Detector and Counter (Python, OpenCV, YOLOv8) [Aug 2024]</h3>
                 <img src="/human.png" alt="Human Detector and Counter" />
                 <p>
@@ -241,7 +312,7 @@ function App() {
                   • Integrated tracking algorithms to maintain consistent counting across multiple frames.
                 </p>
               </a>
-              <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link">
+              <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-4">
                 <h3>Plagiarism Detection System (KMP, Hash Table) [Jun 2024]</h3>
                 <img src="/plagdetect.png" alt="Plagiarism Detector" />
                 <p>
@@ -257,27 +328,27 @@ function App() {
             </div>
           </section>
           <br/><br/>
-          <section id="achievement" className="section achievement">
+          <section id="achievement" className="section achievement fade-in">
             <h2>Achievements</h2>
             <div className="achievement-item">
               <div className="cp">            
                 <h3>Competitive Programming</h3>
                 <div className="cp-card">
-                  <div className='cp-card-cf'>
+                  <div className='cp-card-cf scale-in stagger-1'>
                     <b>Codeforces (Specialist)</b>
                     <img src="https://cdn.iconscout.com/icon/free/png-256/free-code-forces-3521352-2944796.png?f=webp" alt="Codeforces" />
                     <a href="https://codeforces.com/profile/Abhay5055" target="_blank" rel="noopener noreferrer">
                       <button>Show Profile</button>
                     </a>
                   </div>
-                  <div className='cp-card-chef'> 
+                  <div className='cp-card-chef scale-in stagger-2'> 
                     <b>CodeChef (3⭐)</b>               
                     <img src="https://cdn.codechef.com/images/cc-logo.svg" alt="CodeChef" />
                     <a href="https://codechef.com/users/abhay056" target="_blank" rel="noopener noreferrer">
                       <button>Show Profile</button>
                     </a>
                   </div>
-                  <div className='cp-card-leet'>   
+                  <div className='cp-card-leet scale-in stagger-3'>   
                     <b>LeetCode (Knight)</b>                          
                     <img src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png" alt="LeetCode" />
                     <a href="https://leetcode.com/u/abhay5055" target="_blank" rel="noopener noreferrer">
@@ -287,12 +358,12 @@ function App() {
                 </div>
               </div>
               <div className="am">
-                <div className="amlss">
+                <div className="amlss slide-in-right stagger-4">
                   <h3>Machine Learning</h3>
                   Amazon ML Summer School 2025                    
                   <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUeLnMtZd99eMOHOwZBgeW2rU9gzUUkBI3_A&s" alt="Amazon ML Summer School" />
                 </div>
-                <div className='gssoc'>
+                <div className='gssoc slide-in-left stagger-5'>
                   <h3>Open Source Contribution</h3>
                   Girl Script Summer of Code GSSoC 2025
                   <img src="https://media.licdn.com/dms/image/v2/C510BAQGSObrO0QPlMQ/company-logo_200_200/company-logo_200_200/0/1630597186826/girlscriptsoc_logo?e=2147483647&v=beta&t=hMIYqKIIlV3PFys0Ff4bQba_kZIMvychDesmF1_xmcU" alt="Girl Script Summer of Code"/>
@@ -301,7 +372,7 @@ function App() {
             </div>
           </section>
           <br/><br/>
-          <section id="contact" className="section contact">
+          <section id="contact" className="section contact slide-in-left">
             <div className="contact-container">
               <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: 'clamp(1.5rem, 4vw, 2rem)' }}>Get In Touch</h2>
               <form
