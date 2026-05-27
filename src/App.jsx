@@ -200,7 +200,7 @@ function App() {
         <div className="portfolio-container">
           <header className="header fade-in animate">
             <h1>Abhay Bahuguna</h1>
-            <p className="subtitle">Full Stack  Developer</p>
+            <p className="subtitle">AI & Full Stack  Developer</p>
           </header>
           <section id="about" className="section about slide-in-left">
             <img 
@@ -273,56 +273,57 @@ function App() {
           <section id="projects" className="section projects fade-in">
             <h2>Projects</h2>
             <div className="project-item">
-              <a href='https://github.com/Abhay056/expense-tracker-app' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-1">
-                <h3>Expense Tracker App (React.js, Next.js, Supabase )  [Jul 2025]</h3>
-                <img src="/expense-tracker.png" alt="Expense Tracker App" />
+              <a href='https://artsphear.vercel.app' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-1">
+                <h3>ArtSphere: An AI-Augmented Art Marketplace</h3>
+                <img src="/artsphere.png" alt="ArtSphere" />
+                <img src="/artsphere1.png" alt="ArtSphere" />
                 <p>
-                  • Useful application for efficiently managing daily expenses with user authentication.
+                  • Built a full-stack SaaS marketplace enabling artists to upload, sell, and run real-time auctions at scale.
                 </p>
                 <p>
-                  • Multiple features including monthly budgets, filters, and expense summary with charts.
+                  • Implemented AI-based recommendation using <b>Gemini Pro LLM</b>, improving artwork discovery.
                 </p>
                 <p>
-                  • Implemented responsive design with real-time data synchronization and CSV export functionality.
+                  • <b>Tech Stack:</b> React.js, Node.js, Express.js, TypeScript, Tailwind CSS, MongoDB, Google AI Studio, Socket.io
+                </p>
+              </a>
+              <a href='https://github.com/Abhay056/Advanced-log-classifier.git' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-4">
+                <h3>Logify: An Advanced Log Classifier</h3>
+                <img src="/logify.png" alt="Advanced Log Classifier" />
+                <p>
+                  • Build an advanced log classification system using <b>BERT LLM</b> and <b>FastAPI</b> to analyze large-scale system logs.
+                </p>
+                <p>
+                  • Combined regex-based parsing and LLM-based learning to classify structured, noisy, and complex log patterns.
+                </p>
+                <p>
+                  • <b>Tech Stack:</b> FastAPI, Python, LLMs, Regular Expressions
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-2">
-                <h3>Nano C/C++ Compiler (Lex, YACC, GCC, React.js) [Apr 2025]</h3>
+                <h3>Nano CC Compiler: A mini C/C++ Compiler</h3>
                 <img src="/compiler.png" alt="Nano C/C++ Compiler" />
                 <p>
-                  • Developed an interactive Nano compiler with basic error handling.
+                  • Built a C/C++ compiler implementing Lexical Analysis, Syntax Parsing, and Semantic Analysis for code processing.
                 </p>
                 <p>
-                  • Includes Lexical, Syntax and Semantic phase implementation.
+                  • Integrated GCC backend for machine code generation, demonstrating end-to-end understanding of compilation.
                 </p>
                 <p>
-                  • Built a web-based interface for code compilation and interactive debugging features.
+                  • <b>Tech Stack:</b> C/C++, Lex, YACC, GCC, React.js
                 </p>
               </a>
               <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-3">
-                <h3>Human Detector and Counter (Python, OpenCV, YOLOv8) [Aug 2024]</h3>
+                <h3>SeeHuman: A Human Detection and Counting System</h3>
                 <img src="/human.png" alt="Human Detector and Counter" />
                 <p>
-                  • Implemented a system that accurately detects and counts humans in real-time video streams or images.
+                  •Engineered a real-time computer vision system using YOLOv8 for accurate human detection in video streams.
                 </p>
                 <p>
-                  • Efficient solution for various applications requiring human presence monitoring.
+                  • Implemented OpenCV-based tracking to maintain unique identities and prevent duplicate counts.
                 </p>
                 <p>
-                  • Integrated tracking algorithms to maintain consistent counting across multiple frames.
-                </p>
-              </a>
-              <a href='https://github.com/Abhay056/Plagiarism-detector' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-4">
-                <h3>Plagiarism Detection System (KMP, Hash Table) [Jun 2024]</h3>
-                <img src="/plagdetect.png" alt="Plagiarism Detector" />
-                <p>
-                  • Developed a plagiarism detection system with advanced string-matching algorithms and hash tables.
-                </p>
-                <p>
-                  • Created a system to handle large sets of documents efficiently using optimized data structures and smart comparison techniques.
-                </p>
-                <p>
-                  • Implemented similarity scoring mechanisms to provide detailed plagiarism percentage analysis.
+                  • <b>Tech Stack:</b> Python, YOLOv8, OpenCV
                 </p>
               </a>
             </div>
@@ -361,7 +362,7 @@ function App() {
                 <div className="amlss slide-in-right stagger-4">
                   <h3>Machine Learning</h3>
                   Amazon ML Summer School 2025                    
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUeLnMtZd99eMOHOwZBgeW2rU9gzUUkBI3_A&s" alt="Amazon ML Summer School" />
+                  <img src="https://media.licdn.com/dms/image/v2/D560BAQGIfBZekT2g4Q/company-logo_200_200/company-logo_200_200/0/1725250069648?e=2147483647&v=beta&t=RGmtZeq781GxCPfT_TmT-5FsT61Uto77147RSKkUWss" alt="Amazon ML Summer School" />
                 </div>
                 <div className='gssoc slide-in-left stagger-5'>
                   <h3>Open Source Contribution</h3>
