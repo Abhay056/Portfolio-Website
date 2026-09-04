@@ -190,7 +190,7 @@ function App() {
               <a href="#skills" onClick={() => setNavOpen(false)}>Skills</a>
               <a href="#education" onClick={() => setNavOpen(false)}>Education</a>
               <a href="#projects" onClick={() => setNavOpen(false)}>Projects</a>
-              <a href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view?usp=drive_link" target="_blank" rel="noopener noreferrer">My Resume</a>
+              <a href="#achievements" onClick={() => setNavOpen(false)}>Achievements</a>
               <a href="#contact" onClick={() => setNavOpen(false)}>Contact</a>
             </nav>
           </div>
@@ -209,7 +209,17 @@ function App() {
               className="about-photo"
             />
             <div className="about-content">
-              <h2>About Me</h2>
+              <div className="about-heading">
+                <h2>About Me</h2>
+                <a
+                  className="resume-button"
+                  href="https://drive.google.com/file/d/1Ev6Mbu3vqfClXH7uLL5MmTacZpeAJir9/view"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Resume
+                </a>
+              </div>
               <p align="justify">I'm a Full Stack Developer who loves building websites and AI solutions that are useful in real world. I work with technologies like Python, React, Next.js, LLMs, RAG, FastAPI and I’m always curious to learn new tools and frameworks. I enjoy solving problems, whether it’s through real-world projects or competitive programming. My aim is to create applications that are efficient, scalable, and make a real difference for people.</p>
 <p align="justify">Feel free to explore my portfolio and reach out to collaborate!</p>
               <div className="social-links fade-in stagger-3">
@@ -247,10 +257,8 @@ function App() {
               <li><span className="skill-icon scale-in stagger-6"><img src="https://icongr.am/devicon/css3-original.svg?size=128&color=currentColor" alt="CSS3" /><span className="skill-tooltip">CSS3</span></span></li>
               <li><span className="skill-icon scale-in stagger-1"><img src="https://img.icons8.com/?size=128&id=WoopfRcDj3RF&format=png&color=000000" alt="Tailwind CSS" /><span className="skill-tooltip">Tailwind CSS</span></span></li>
               <li><span className="skill-icon scale-in stagger-2"><img src="https://icongr.am/devicon/mongodb-original.svg?size=128&color=currentColor" alt="MongoDB" /><span className="skill-tooltip">MongoDB</span></span></li>
-              <li><span className="skill-icon scale-in stagger-3"><img src="https://icongr.am/devicon/oracle-original.svg?size=128&color=currentColor" alt="Oracle" /><span className="skill-tooltip">Oracle</span></span></li>
               <li><span className="skill-icon scale-in stagger-4"><img src="https://icongr.am/devicon/git-original.svg?size=128&color=currentColor" alt="Git" /><span className="skill-tooltip">Git</span></span></li>
               <li><span className="skill-icon scale-in stagger-5"><img src="https://img.icons8.com/?size=128&id=39858&format=png&color=000000" alt="MySQL" /><span className="skill-tooltip">MySQL</span></span></li>
-              <li><span className='skill-icon scale-in stagger-6'><img src="https://icongr.am/devicon/android-original.svg?size=128&color=currentColor" alt="Android" /><span className="skill-tooltip">Android</span></span></li>
             </ul>
           </section>
           <br/><br/>
@@ -273,6 +281,39 @@ function App() {
           <section id="projects" className="section projects fade-in">
             <h2>Projects</h2>
             <div className="project-item">
+               <a href='https://github.com/Abhay056/HalAudit-Real-Time-LLM-Fact-Checker' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-4">
+                <h3>HalAudit: Real-Time LLM Hallucination Detection Pipeline</h3>
+                <img src="/HalAudit.png" alt="Hallucination Detection System" />
+                <p>
+                  • Built a claim-level fact-checking pipeline extracting atomic claims from LLM outputs and classifying each as
+Supported/Contradicted/Unverifiable via RAG retrieval + DeBERTa NLI scoring, returning confidence scores.
+                </p>
+                <p>
+                  • Designed an async task pipeline with FastAPI and Redis-backed ARQ queues to handle concurrent fact-checking
+requests with sliding-window rate limiting.
+                </p>
+                <p>
+                  • <b>Tech Stack:</b> RAG, DeBERTa NLI, FastAPI, Redis/ARQ, SQLite, Docker
+                </p>
+              </a>
+
+               <a href='https://github.com/Abhay056/AutoRes-Autonomous-Ai-Research-Agent' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-3">
+                <h3>AutoRes: Autonomous AI Research & Data Analyst Agent</h3>
+                <img src="/AutoRes.png" alt="Autonomous AI Research & Data Analyst Agent" />
+                <p>
+                  • Built a multi-agent research system using CrewAI that decomposes natural-language research objectives into
+specialized search, reasoning, and Python-analysis tasks to generate structured reports with visualizations.
+                </p>
+                <p>
+                  • Developed a RAG architecture using a persistent NumPy vector store, PostgreSQL memory, and knowledge graph,
+enabling agents to retrieve relevant information and maintain context across sessions and integrated DeepSeek-R1 through Ollama for local inference.
+                </p>
+                <p>
+                  • <b>Tech Stack:</b> LLM Agents, CrewAI, RAG, PostgreSQL, Knowledge Graph, Ollama, DeepSeek-R1
+
+                </p>
+              </a>
+
               <a href='https://artsphear.vercel.app' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-1">
                 <h3>ArtSphere: An AI-Augmented Art Marketplace</h3>
                 <img src="/artsphere.png" alt="ArtSphere" />
@@ -287,19 +328,7 @@ function App() {
                   • <b>Tech Stack:</b> React.js, Node.js, Express.js, TypeScript, Tailwind CSS, MongoDB, Google AI Studio, Socket.io
                 </p>
               </a>
-              <a href='https://github.com/Abhay056/Advanced-log-classifier.git' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-4">
-                <h3>Logify: An Advanced Log Classifier</h3>
-                <img src="/logify.png" alt="Advanced Log Classifier" />
-                <p>
-                  • Build an advanced log classification system using <b>BERT LLM</b> and <b>FastAPI</b> to analyze large-scale system logs.
-                </p>
-                <p>
-                  • Combined regex-based parsing and LLM-based learning to classify structured, noisy, and complex log patterns.
-                </p>
-                <p>
-                  • <b>Tech Stack:</b> FastAPI, Python, LLMs, Regular Expressions
-                </p>
-              </a>
+             
               <a href='https://github.com/Abhay056/Nano-cc-compiler' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-right stagger-2">
                 <h3>Nano CC Compiler: A mini C/C++ Compiler</h3>
                 <img src="/compiler.png" alt="Nano C/C++ Compiler" />
@@ -313,23 +342,11 @@ function App() {
                   • <b>Tech Stack:</b> C/C++, Lex, YACC, GCC, React.js
                 </p>
               </a>
-              <a href='https://github.com/Abhay056/Human-detector-and-counter' target="_blank" rel="noopener noreferrer" className="project project-link slide-in-left stagger-3">
-                <h3>SeeHuman: A Human Detection and Counting System</h3>
-                <img src="/human.png" alt="Human Detector and Counter" />
-                <p>
-                  •Engineered a real-time computer vision system using YOLOv8 for accurate human detection in video streams.
-                </p>
-                <p>
-                  • Implemented OpenCV-based tracking to maintain unique identities and prevent duplicate counts.
-                </p>
-                <p>
-                  • <b>Tech Stack:</b> Python, YOLOv8, OpenCV
-                </p>
-              </a>
+          
             </div>
           </section>
           <br/><br/>
-          <section id="achievement" className="section achievement fade-in">
+          <section id="achievements" className="section achievement fade-in">
             <h2>Achievements</h2>
             <div className="achievement-item">
               <div className="cp">            
@@ -361,13 +378,13 @@ function App() {
               <div className="am">
                 <div className="amlss slide-in-right stagger-4">
                   <h3>Machine Learning</h3>
-                  Amazon ML Summer School 2025                    
+                  <p className="award-name">Amazon ML Summer School 2025</p>
                   <img src="https://media.licdn.com/dms/image/v2/D560BAQGIfBZekT2g4Q/company-logo_200_200/company-logo_200_200/0/1725250069648?e=2147483647&v=beta&t=RGmtZeq781GxCPfT_TmT-5FsT61Uto77147RSKkUWss" alt="Amazon ML Summer School" />
                 </div>
                 <div className='gssoc slide-in-left stagger-5'>
                   <h3>Open Source Contribution</h3>
-                  Girl Script Summer of Code GSSoC 2025
-                  <img src="https://media.licdn.com/dms/image/v2/C510BAQGSObrO0QPlMQ/company-logo_200_200/company-logo_200_200/0/1630597186826/girlscriptsoc_logo?e=2147483647&v=beta&t=hMIYqKIIlV3PFys0Ff4bQba_kZIMvychDesmF1_xmcU" alt="Girl Script Summer of Code"/>
+                  <p className="award-name">OWASP Nest</p>
+                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcStOIydTNbdYJpvKRfcDWivFXFx3jT82hDA1_ZfUw2xuA&s=10" alt="OWASP Nest"/>
                 </div>
               </div>
             </div>
@@ -598,7 +615,7 @@ function App() {
           <footer className="footer">
             <p>
               <br/>
-              &copy; {new Date().getFullYear()} Abhay Bahuguna. All rights reserved.
+              &copy; {new Date().getFullYear()}  Abhay Bahuguna
             </p>
           </footer>
         </div>

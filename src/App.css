@@ -323,9 +323,47 @@ html {
 
 #about h2 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
+  margin: 0;
   color: #ffffff;
   text-align: left;
+}
+
+.about-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.resume-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0.65rem 1.1rem;
+  border: 1px solid #61dafb;
+  border-radius: 6px;
+  background: white;
+  color: black;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.resume-button:hover {
+  background: #61dafb;
+  color: #07152e;
+  box-shadow: 0 0 18px rgba(97, 218, 251, 0.65);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .about-heading {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
 
 .section .about .p {
@@ -595,7 +633,8 @@ html {
 }
 
 .amlss, .gssoc {
-  height: fit-content;
+  box-sizing: border-box;
+  min-height: 330px;
   width: 400px;
   display: flex;
   flex-direction: column;
@@ -611,10 +650,28 @@ html {
   max-width: 450px;
 }
 
+.amlss h3, .gssoc h3 {
+  min-height: 3.5rem;
+  margin: 0;
+}
+
+.award-name {
+  min-height: 1.5rem;
+  margin: 0;
+}
+
 .amlss:hover, .gssoc:hover {
   background: var(--bg-gradient-hover);
   box-shadow: 0px 0px 30px var(--highlighter);
   transform: scale(1.03);  
+}
+
+.amlss img, .gssoc img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  margin-top: auto;
 }
 
 .amlss img {
@@ -624,7 +681,7 @@ html {
 
 .gssoc img {
   border-radius: 8px;
-  box-shadow: 0 0 0 5px rgb(196, 77, 77);
+  box-shadow: 0 0 0 5px black;
 }
 
 .contact-container {
